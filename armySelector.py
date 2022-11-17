@@ -38,7 +38,7 @@ class Menu(tk.Tk):
         self.outputLabel = ttk.Label(self,foreground='red')
         self.outputLabel.grid(column=0,row=1,sticky=tk.W,**paddings)
         self.vehicleOutputLabel = ttk.Label(self,foreground='black')
-        self.vehicleOutputLabel.grid(column=3,row=3,sticky=tk.W,**paddings)
+        self.vehicleOutputLabel.grid(column=3,row=4,sticky=tk.W,**paddings)
         self.unitOutputLabel = ttk.Label(self,foreground='black')
         self.unitOutputLabel.grid(column=3,row=2,sticky=tk.W,**paddings)
     def option_changed(self,*args):
@@ -50,16 +50,16 @@ class Menu(tk.Tk):
         unitSlider = tk.Scale(self, from_=0, to=500, orient='horizontal',variable=self.unitAmount)
         unitSlider.grid(column=1,row=2,stick=tk.W)
         unitSet = ttk.Button(self,text='Set',command=self.unitSet)
-        unitSet.grid(column=3,row=2,sticky=tk.W)
+        unitSet.grid(column=1,row=3,sticky=tk.W)
     def units(self,*args):
         pass
     def vehicleAdd(self,*args):
         vehicleToAdd = ttk.OptionMenu(self,self.vehicleOption,self.vehicleSelector[0],*self.vehicleSelector,command = self.vehicles)
-        vehicleToAdd.grid(column=0,row=3,sticky=tk.W)
+        vehicleToAdd.grid(column=0,row=4,sticky=tk.W)
         vehicleSlider = tk.Scale(self, from_=0, to=500,orient='horizontal',variable=self.vehicleAmount)
-        vehicleSlider.grid(column=1,row=3,sticky=tk.W)
+        vehicleSlider.grid(column=1,row=4,sticky=tk.W)
         vehicleSet = ttk.Button(self,text='Set',command=self.vehicleSet)
-        vehicleSet.grid(column=1,row=4,sticky=tk.W)
+        vehicleSet.grid(column=1,row=5,sticky=tk.W)
     def vehicles(self,*args):
         pass
     def vehicleSet(self,*args):
