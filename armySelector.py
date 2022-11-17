@@ -4,7 +4,7 @@ from tkinter import ttk
 class Menu(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.geometry("320x80")
+        self.geometry("480x240")
         self.title ('Army Creator')
 
         self.armySelector = ('Red','Blue')
@@ -42,11 +42,15 @@ class Menu(tk.Tk):
     def unitsAdd(self,*args):
         unitsToAdd = ttk.OptionMenu(self,self.unitOption,self.unitSelector[0],*self.unitSelector,command =self.units )
         unitsToAdd.grid(column=0, row=2,sticky=tk.W)
+        unitSlider = tk.Scale(self, from_=0, to=500, orient='horizontal')
+        unitSlider.grid(column=1,row=2,stick=tk.W)
     def units(self,*args):
         pass
     def vehicleAdd(self,*args):
         vehicleToAdd = ttk.OptionMenu(self,self.vehicleOption,self.vehicleSelector[0],*self.vehicleSelector,command = self.vehicles)
         vehicleToAdd.grid(column=0,row=3,sticky=tk.W)
+        vehicleSlider = tk.Scale(self, from_=0, to=500, orient='horizontal')
+        vehicleSlider.grid(column=1,row=3,stick=tk.W)
     def vehicles(self,*args):
         pass
 if __name__ == "__main__":
