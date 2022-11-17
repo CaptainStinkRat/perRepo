@@ -68,6 +68,9 @@ class Menu(tk.Tk):
         pass
     def save(self,*args):
         file = asksaveasfile(initialfile = 'UntitledArmy.txt',defaultextension='.txt',filetypes=[("All Files","*.*"),("Text Documents","*.txt")])
+        fileWrite = open(file,"w+")
+        fileWrite.write(self.vehicleOption,self.vehicleAmount,self.unitOption,self.unitAmount,self.teamOption)
+        fileWrite.close()
     def vehicleSet(self,*args):
         self.vehicleOutputLabel['text']=f'{self.vehicleAmount.get()} {self.vehicleOption.get()}'
     def unitSet(self,*args):
