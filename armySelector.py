@@ -1,5 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
+from tkinter.filedialog import asksaveasfile
+
 
 class Menu(tk.Tk):
     def __init__(self):
@@ -41,6 +43,8 @@ class Menu(tk.Tk):
         self.vehicleOutputLabel.grid(column=3,row=4,sticky=tk.W,**paddings)
         self.unitOutputLabel = ttk.Label(self,foreground='black')
         self.unitOutputLabel.grid(column=3,row=2,sticky=tk.W,**paddings)
+        saveButton = ttk.Button(self,text='Save to file',command=lambda:self.save())
+        saveButton.grid(column=3,row=6,sticky=tk.W,**paddings)
     def option_changed(self,*args):
         self.outputLabel['text']=f'You selected: {self.teamOption.get()}'
 
@@ -62,6 +66,8 @@ class Menu(tk.Tk):
         vehicleSet.grid(column=1,row=5,sticky=tk.W)
     def vehicles(self,*args):
         pass
+    def save(self,*args):
+        file = asksaveasfile(initialfile = 'UntitledArmy.txt',defaultextension='.txt',filetypes=[("All Files","*.*"),("Text Documents","*.txt")])
     def vehicleSet(self,*args):
         self.vehicleOutputLabel['text']=f'{self.vehicleAmount.get()} {self.vehicleOption.get()}'
     def unitSet(self,*args):
