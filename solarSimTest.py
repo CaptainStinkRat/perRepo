@@ -79,6 +79,36 @@ class Menu(tk.Tk):
     def planets(self,*args):
         pass
     def simGen(self,*args):
+        global numOfPlanets
+        numOfPlanets = self.planetCount
+        if numOfPlanets == 1:
+            global planet1Mass
+            planet1Mass = self.planetGrav.get()
+        elif numOfPlanets == 2:
+            global planet2Mass
+            planet1Mass = self.planetGrav.get()
+            planet2Mass = self.planetGrav2.get()
+        elif numOfPlanets == 3:
+            global planet3Mass
+            planet1Mass = self.planetGrav.get()
+            planet2Mass = self.planetGrav2.get()
+            planet3Mass = self.planetGrav3.get()
+        elif numOfPlanets == 4:
+            global planet4Mass
+            planet1Mass = self.planetGrav.get()
+            planet2Mass = self.planetGrav2.get()
+            planet3Mass = self.planetGrav3.get()
+            planet4Mass = self.planetGrav4.get()
+        elif numOfPlanets == 5:
+            global planet5Mass
+            planet1Mass = self.planetGrav.get()
+            planet2Mass = self.planetGrav2.get()
+            planet3Mass = self.planetGrav3.get()
+            planet4Mass = self.planetGrav4.get()
+            planet5Mass = self.planetGrav5.get()
+        else:
+            pass
+        self.destroy()
         pass
 class SolarSystem:
 
@@ -259,10 +289,33 @@ if __name__=="__main__":
     solar_system = SolarSystem(400,projection_2d=True)
     sun = Sun(solar_system)
 
-    planets = (Planet(solar_system,position=(150,50,0),velocity=(0,5,5),),
-            Planet(solar_system,mass=30,position=(100,-50,150),velocity=(5,0,0)
+    if numOfPlanets == 1:
+
+
+        planets = (Planet(solar_system,mass=planet1Mass,position=(150,50,0),velocity=(0,5,5),))
+    elif numOfPlanets == 2:
+        planets = (Planet(solar_system,mass=planet1Mass,position=(150,50,0),velocity=(0,5,5),),
+            Planet(solar_system,mass=planet2Mass,position=(100,-50,150),velocity=(5,0,0)
         )
-    )
+        )
+    elif numOfPlanets == 3:
+        planets = (Planet(solar_system,mass=planet1Mass,position=(150,50,0),velocity=(0,5,5),),
+            Planet(solar_system,mass=planet2Mass,position=(100,50,150),velocity=(0,5,0),),
+            Planet(solar_system,mass=planet3Mass,position=(50,-150,50),velocity=(0,0,5)
+            )
+            )
+    elif numOfPlanets == 4:
+        planets = (Planet(solar_system,mass=planet1Mass,position=(150,50,0),velocity=(0,5,5),),
+            Planet(solar_system,mass=planet2Mass,position=(100,50,150),velocity=(0,5,0),),
+            Planet(solar_system,mass=planet3Mass,position=(50,-150,50),velocity=(0,0,5),),
+            Planet(solar_system,mass=planet4Mass,position=(0,100,100),velocity=(0,3,4)))
+    elif numOfPlanets == 5:
+        planets = (Planet(solar_system,mass=planet1Mass,position=(150,50,0),velocity=(0,5,5),),
+            Planet(solar_system,mass=planet2Mass,position=(100,50,150),velocity=(0,5,0),),
+            Planet(solar_system,mass=planet3Mass,position=(50,-150,50),velocity=(0,0,5),),
+            Planet(solar_system,mass=planet4Mass,position=(0,100,100),velocity=(0,3,4),),
+            Planet(solar_system,mass=planet5Mass,position=(50,-50,0),velocity=(0,3,1)))      
+            
     while True:
         solar_system.calculateAllBodyInteractions()
         solar_system.update_all()
