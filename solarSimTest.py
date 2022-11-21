@@ -307,8 +307,8 @@ if __name__=="__main__":
     if numberOfSuns == 1:
         sun = Sun(solar_system)
     elif numberOfSuns == 2:
-        sun = Sun(solar_system)
-        sun2 = Sun(solar_system,position=(5,0,0))
+        sun = Sun(solar_system,mass=2500,position=(-150,-150,0))
+        sun2 = Sun(solar_system,mass=2500,position=(150,150,0))
     else:
         pass
 
