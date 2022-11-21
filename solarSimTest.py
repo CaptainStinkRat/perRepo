@@ -4,7 +4,7 @@ from tkinter.filedialog import asksaveasfile
 import matplotlib.pyplot as plt
 import math
 import itertools
-
+from random import randint
 
 
 
@@ -14,8 +14,7 @@ class Menu(tk.Tk):
         self.geometry("480x300")
         self.title('Solar System Creator')
 
-        self.planetSelector=('Earthlike','Marslike','Mercurylike',
-        'Venuslike','Jupiterlike','Saturnlike','Uranuslike','Neptunelike')
+        self.planetSelector=('purple','green','blue','red','orange')
         self.planetOption = tk.StringVar(self)
         self.planetOption2 = tk.StringVar(self)
         self.planetOption3 = tk.StringVar(self)
@@ -45,7 +44,7 @@ class Menu(tk.Tk):
         label = ttk.Label(self, text='Planet 1 mass:')
         label.grid(column=0,row=1,sticky=tk.W)
         # planetsToAdd = ttk.OptionMenu(self,self.planetOption,self.planetSelector[0],*self.planetSelector,command = self.planets)
-        # planetsToAdd.grid(column=0,row=1,sticky=tk.W)
+        # planetsToAdd.grid(column=0,row=2,sticky=tk.W)
         planetSlider = tk.Scale(self, from_=10, to=60,orient='horizontal',variable=self.planetGrav)
         planetSlider.set(35)
         planetSlider.grid(column=1,row=1,sticky=tk.W)
@@ -219,7 +218,7 @@ class Sun(SolarSystemBody):
         self.colour = 'yellow'
 
 class Planet(SolarSystemBody):
-    colours = itertools.cycle([(1,0,0),(0,1,0),(0,0,1)])
+    colours = itertools.cycle(['purple','red','lightgreen','lightblue','orange'])
     def __init__(self,solar_system,mass=10,position=(0,0,0),velocity=(0,0,0),):
         super(Planet, self).__init__(solar_system,mass,position,velocity)
         self.colour = next(Planet.colours)
@@ -298,33 +297,68 @@ if __name__=="__main__":
     app.mainloop()
     solar_system = SolarSystem(400,projection_2d=True)
     sun = Sun(solar_system)
+    
+    planetOneXPosition = randint(-150,150)
+    planetOneYPosition = randint(-150,150)
+    planetOneZPosition = randint(-150,150)
+    planetOneXVelocity = randint(0,5)
+    planetOneYVelocity = randint(0,5)
+    planetOneZVelocity = randint(0,5)
+
+    planetTwoXPosition = randint(-150,150)
+    planetTwoYPosition = randint(-150,150)
+    planetTwoZPosition = randint(-150,150)
+    planetTwoXVelocity = randint(0,5)
+    planetTwoYVelocity = randint(0,5)
+    planetTwoZVelocity = randint(0,5)
+
+    planetThreeXPosition = randint(-150,150)
+    planetThreeYPosition = randint(-150,150)
+    planetThreeZPosition = randint(-150,150)
+    planetThreeXVelocity = randint(0,5)
+    planetThreeYVelocity = randint(0,5)
+    planetThreeZVelocity = randint(0,5)
+
+    planetFourXPosition = randint(-150,150)
+    planetFourYPosition = randint(-150,150)
+    planetFourZPosition = randint(-150,150)
+    planetFourXVelocity = randint(0,5)
+    planetFourYVelocity = randint(0,5)
+    planetFourZVelocity = randint(0,5)
+
+    planetFiveXPosition = randint(-150,150)
+    planetFiveYPosition = randint(-150,150)
+    planetFiveZPosition = randint(-150,150)
+    planetFiveXVelocity = randint(0,5)
+    planetFiveYVelocity = randint(0,5)
+    planetFiveZVelocity = randint(0,5)
 
     if numOfPlanets == 1:
 
 
-        planets = (Planet(solar_system,mass=planet1Mass,position=(150,50,0),velocity=(0,5,5),))
+        planets = (Planet(solar_system,mass=planet1Mass,position=(planetOneXPosition,planetOneYPosition,planetOneZPosition),velocity=(planetOneXVelocity,planetOneYVelocity,planetOneZVelocity),))
     elif numOfPlanets == 2:
-        planets = (Planet(solar_system,mass=planet1Mass,position=(150,50,0),velocity=(0,5,5),),
-            Planet(solar_system,mass=planet2Mass,position=(100,-50,150),velocity=(5,0,0)
+        planets = (Planet(solar_system,mass=planet1Mass,position=(planetOneXPosition,planetOneYPosition,planetOneZPosition),velocity=(planetOneXVelocity,planetOneYVelocity,planetOneZVelocity),),
+            Planet(solar_system,mass=planet2Mass,position=(planetTwoXPosition,planetTwoYPosition,planetTwoZPosition),velocity=(planetTwoXVelocity,planetTwoYVelocity,planetTwoZVelocity)
         )
         )
     elif numOfPlanets == 3:
-        planets = (Planet(solar_system,mass=planet1Mass,position=(150,50,0),velocity=(0,5,5),),
-            Planet(solar_system,mass=planet2Mass,position=(100,50,150),velocity=(0,5,0),),
-            Planet(solar_system,mass=planet3Mass,position=(50,-150,50),velocity=(0,0,5)
+        planets = (Planet(solar_system,mass=planet1Mass,position=(planetOneXPosition,planetOneYPosition,planetOneZPosition),velocity=(planetOneXVelocity,planetOneYVelocity,planetOneZVelocity),),
+            Planet(solar_system,mass=planet2Mass,position=(planetTwoXPosition,planetTwoYPosition,planetTwoZPosition),velocity=(planetTwoXVelocity,planetTwoYVelocity,planetTwoZVelocity),),
+            Planet(solar_system,mass=planet3Mass,position=(planetThreeXPosition,planetThreeYPosition,planetThreeZPosition),velocity=(planetThreeXVelocity,planetThreeYVelocity,planetThreeZVelocity)
             )
             )
     elif numOfPlanets == 4:
-        planets = (Planet(solar_system,mass=planet1Mass,position=(150,50,0),velocity=(0,5,5),),
-            Planet(solar_system,mass=planet2Mass,position=(100,50,150),velocity=(0,5,0),),
-            Planet(solar_system,mass=planet3Mass,position=(50,-150,50),velocity=(0,0,5),),
-            Planet(solar_system,mass=planet4Mass,position=(0,100,100),velocity=(0,3,4)))
+        planets = (Planet(solar_system,mass=planet1Mass,position=(planetOneXPosition,planetOneYPosition,planetOneZPosition),velocity=(planetOneXVelocity,planetOneYVelocity,planetOneZVelocity),),
+            Planet(solar_system,mass=planet2Mass,position=(planetTwoXPosition,planetTwoYPosition,planetTwoZPosition),velocity=(planetTwoXVelocity,planetTwoYVelocity,planetTwoZVelocity),),
+            Planet(solar_system,mass=planet3Mass,position=(planetThreeXPosition,planetThreeYPosition,planetThreeZPosition),velocity=(planetThreeXVelocity,planetThreeYVelocity,planetThreeZVelocity),),
+            Planet(solar_system,mass=planet4Mass,position=(planetFourXPosition,planetFourYPosition,planetFourZPosition),velocity=(planetFourXVelocity,planetFourYVelocity,planetFourZVelocity)))
     elif numOfPlanets == 5:
-        planets = (Planet(solar_system,mass=planet1Mass,position=(150,50,0),velocity=(0,5,5),),
-            Planet(solar_system,mass=planet2Mass,position=(100,50,150),velocity=(0,5,0),),
-            Planet(solar_system,mass=planet3Mass,position=(50,-150,50),velocity=(0,0,5),),
-            Planet(solar_system,mass=planet4Mass,position=(0,100,100),velocity=(0,3,4),),
-            Planet(solar_system,mass=planet5Mass,position=(50,-50,0),velocity=(0,3,1)))      
+        planets = (Planet(solar_system,mass=planet1Mass,position=(planetOneXPosition,planetOneYPosition,planetOneZPosition),velocity=(planetOneXVelocity,planetOneYVelocity,planetOneZVelocity),),
+            Planet(solar_system,mass=planet2Mass,position=(planetTwoXPosition,planetTwoYPosition,planetTwoZPosition),velocity=(planetTwoXVelocity,planetTwoYVelocity,planetTwoZVelocity),),
+            Planet(solar_system,mass=planet3Mass,position=(planetThreeXPosition,planetThreeYPosition,planetThreeZPosition),velocity=(planetThreeXVelocity,planetThreeYVelocity,planetThreeZVelocity),),
+            Planet(solar_system,mass=planet4Mass,position=(planetFourXPosition,planetFourYPosition,planetFourZPosition),velocity=(planetFourXVelocity,planetFourYVelocity,planetFourZVelocity),),
+            Planet(solar_system,mass=planet5Mass,position=(planetFiveXPosition,planetFiveYPosition,planetFiveZPosition),velocity=(planetFiveXVelocity,planetFiveYVelocity,planetFiveZVelocity)))      
             
     while True:
         solar_system.calculateAllBodyInteractions()
