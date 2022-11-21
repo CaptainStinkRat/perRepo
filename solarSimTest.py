@@ -256,11 +256,11 @@ class Vector:
 if __name__=="__main__":
     app = Menu()
     app.mainloop()
-    solar_system = SolarSystem(400)
+    solar_system = SolarSystem(400,projection_2d=True)
     sun = Sun(solar_system)
 
     planets = (Planet(solar_system,position=(150,50,0),velocity=(0,5,5),),
-            Planet(solar_system,mass=Menu.planetGrav.get(),position=(100,-50,150),velocity=(5,0,0)
+            Planet(solar_system,mass=30,position=(100,-50,150),velocity=(5,0,0)
         )
     )
     while True:
