@@ -11,10 +11,12 @@ from random import randint
 class Menu(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.geometry("480x300")
+        self.geometry("540x320")
         self.title('Solar System Creator')
 
         self.planetSelector=('purple','green','blue','red','orange')
+        self.sunSelector = (1,2)
+        self.sunOption = tk.IntVar(self)
         self.planetOption = tk.StringVar(self)
         self.planetOption2 = tk.StringVar(self)
         self.planetOption3 = tk.StringVar(self)
@@ -37,8 +39,11 @@ class Menu(tk.Tk):
         planetNumSel.grid(column=1,row=0,sticky=tk.W,**paddings)
         self.planetCount = 0
         simGenerate = ttk.Button(self,text='Generate simulation',command=self.simGen)
-        simGenerate.grid(column=1,row=6,sticky=tk.W,**paddings)
-    
+        simGenerate.grid(column=2,row=6,sticky=tk.W,**paddings)
+        sunLabel = ttk.Label(self,text='Select how many suns:')
+        sunLabel.grid(column=0,row=6,sticky=tk.W,**paddings)
+        sunGenerate = ttk.OptionMenu(self,self.sunOption,self.sunSelector[0],*self.sunSelector,command = self.numOfSuns)
+        sunGenerate.grid(column=1,row=6,sticky=tk.W,**paddings)
     def planetNum(self,*args):
         self.planetCount = self.planetCount + 1
         label = ttk.Label(self, text='Planet 1 mass:')
@@ -119,6 +124,9 @@ class Menu(tk.Tk):
             pass
         self.destroy()
         pass
+    def numOfSuns(self,*args):
+        global numberOfSuns
+        numberOfSuns = self.sunOption.get()
 class SolarSystem:
 
     def __init__(self,size,projection_2d=False):
@@ -296,8 +304,14 @@ if __name__=="__main__":
     app = Menu()
     app.mainloop()
     solar_system = SolarSystem(400,projection_2d=True)
-    sun = Sun(solar_system)
-    
+    if numberOfSuns == 1:
+        sun = Sun(solar_system)
+    elif numberOfSuns == 2:
+        sun = Sun(solar_system)
+        sun2 = Sun(solar_system,position=(5,0,0))
+    else:
+        pass
+
     planetOneXPosition = randint(-150,150)
     planetOneYPosition = randint(-150,150)
     planetOneZPosition = randint(-150,150)
