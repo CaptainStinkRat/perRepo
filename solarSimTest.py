@@ -11,7 +11,7 @@ import itertools
 class Menu(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.geometry("480x240")
+        self.geometry("480x300")
         self.title('Solar System Creator')
 
         self.planetSelector=('Earthlike','Marslike','Mercurylike',
@@ -42,32 +42,42 @@ class Menu(tk.Tk):
     
     def planetNum(self,*args):
         self.planetCount = self.planetCount + 1
-        planetsToAdd = ttk.OptionMenu(self,self.planetOption,self.planetSelector[0],*self.planetSelector,command = self.planets)
-        planetsToAdd.grid(column=0,row=1,sticky=tk.W)
+        label = ttk.Label(self, text='Planet 1 mass:')
+        label.grid(column=0,row=1,sticky=tk.W)
+        # planetsToAdd = ttk.OptionMenu(self,self.planetOption,self.planetSelector[0],*self.planetSelector,command = self.planets)
+        # planetsToAdd.grid(column=0,row=1,sticky=tk.W)
         planetSlider = tk.Scale(self, from_=10, to=60,orient='horizontal',variable=self.planetGrav)
         planetSlider.set(35)
         planetSlider.grid(column=1,row=1,sticky=tk.W)
         if self.planetCount == 2:
-            planetsToAdd2 = ttk.OptionMenu(self,self.planetOption2,self.planetSelector[0],*self.planetSelector,command = self.planets)
-            planetsToAdd2.grid(column=0,row=2,sticky=tk.W)
+            label = ttk.Label(self, text='Planet 2 mass:')
+            label.grid(column=0,row=2,sticky=tk.W)
+            # planetsToAdd2 = ttk.OptionMenu(self,self.planetOption2,self.planetSelector[0],*self.planetSelector,command = self.planets)
+            # planetsToAdd2.grid(column=0,row=2,sticky=tk.W)
             planetSlider2 = tk.Scale(self, from_=10, to=60,orient='horizontal',variable=self.planetGrav2)
             planetSlider2.set(35)
             planetSlider2.grid(column=1,row=2,sticky=tk.W)
         elif self.planetCount == 3:
-            planetsToAdd3 = ttk.OptionMenu(self,self.planetOption3,self.planetSelector[0],*self.planetSelector,command = self.planets)
-            planetsToAdd3.grid(column=0,row=3,sticky=tk.W)
+            label = ttk.Label(self, text='Planet 3 mass:')
+            label.grid(column=0,row=3,sticky=tk.W)
+            # planetsToAdd3 = ttk.OptionMenu(self,self.planetOption3,self.planetSelector[0],*self.planetSelector,command = self.planets)
+            # planetsToAdd3.grid(column=0,row=3,sticky=tk.W)
             planetSlider3 = tk.Scale(self, from_=10, to=60,orient='horizontal',variable=self.planetGrav3)
             planetSlider3.set(35)
             planetSlider3.grid(column=1,row=3,sticky=tk.W)
         elif self.planetCount == 4:
-            planetsToAdd4 = ttk.OptionMenu(self,self.planetOption4,self.planetSelector[0],*self.planetSelector,command = self.planets)
-            planetsToAdd4.grid(column=0,row=4,sticky=tk.W)
+            label = ttk.Label(self, text='Planet 4 mass:')
+            label.grid(column=0,row=4,sticky=tk.W)
+            # planetsToAdd4 = ttk.OptionMenu(self,self.planetOption4,self.planetSelector[0],*self.planetSelector,command = self.planets)
+            # planetsToAdd4.grid(column=0,row=4,sticky=tk.W)
             planetSlider4 = tk.Scale(self, from_=10, to=60,orient='horizontal',variable=self.planetGrav4)
             planetSlider4.set(35)
             planetSlider4.grid(column=1,row=4,sticky=tk.W)
         elif self.planetCount == 5:
-            planetsToAdd5 = ttk.OptionMenu(self,self.planetOption5,self.planetSelector[0],*self.planetSelector,command = self.planets)
-            planetsToAdd5.grid(column=0,row=5,sticky=tk.W)
+            label = ttk.Label(self, text='Planet 5 mass:')
+            label.grid(column=0,row=5,sticky=tk.W)
+            # planetsToAdd5 = ttk.OptionMenu(self,self.planetOption5,self.planetSelector[0],*self.planetSelector,command = self.planets)
+            # planetsToAdd5.grid(column=0,row=5,sticky=tk.W)
             planetSlider5 = tk.Scale(self, from_=10, to=60,orient='horizontal',variable=self.planetGrav5)
             planetSlider5.set(35)
             planetSlider5.grid(column=1,row=5,sticky=tk.W)
