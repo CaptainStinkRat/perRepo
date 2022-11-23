@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import math
 import itertools
 from random import randint
+import time
 
 
 
@@ -15,7 +16,6 @@ class Menu(tk.Tk):
         self.title('Solar System Creator')
 
         self.planetSelector=('purple','green','blue','red','orange')
-        self.sunSelector = (1,2)
         self.sunOption = tk.IntVar(self)
         self.planetOption = tk.StringVar(self)
         self.planetOption2 = tk.StringVar(self)
@@ -28,6 +28,7 @@ class Menu(tk.Tk):
         self.planetGrav3 = tk.IntVar(self)
         self.planetGrav4 = tk.IntVar(self)
         self.planetGrav5 = tk.IntVar(self)
+        self.cometOn = tk.IntVar(self)
         self.createWidgets()
         self.planetNumOption.set(0)
 
@@ -40,10 +41,10 @@ class Menu(tk.Tk):
         self.planetCount = 0
         simGenerate = ttk.Button(self,text='Generate simulation',command=self.simGen)
         simGenerate.grid(column=2,row=6,sticky=tk.W,**paddings)
-        sunLabel = ttk.Label(self,text='Select how many suns:')
-        sunLabel.grid(column=0,row=6,sticky=tk.W,**paddings)
-        sunGenerate = ttk.OptionMenu(self,self.sunOption,self.sunSelector[0],*self.sunSelector,command = self.numOfSuns)
+        sunGenerate = ttk.Checkbutton(self,text='Two suns',variable=self.sunOption,onvalue=1,offvalue=0,command = self.numOfSuns)
         sunGenerate.grid(column=1,row=6,sticky=tk.W,**paddings)
+        cometGen = ttk.Checkbutton(self, text='Random Comets',variable=self.cometOn,onvalue=1,offvalue=0,command=self.ranComets)
+        cometGen.grid(column=0,row=6,sticky=tk.W,**paddings)
     def planetNum(self,*args):
         self.planetCount = self.planetCount + 1
         label = ttk.Label(self, text='Planet 1 mass:')
@@ -91,6 +92,10 @@ class Menu(tk.Tk):
         planetsToAdd = ttk.OptionMenu(self,self.planetOption,self.planetSelector[0],*self.planetSelector,command = self.planets)
         planetsToAdd.grid(column=0,row=1,sticky=tk.W)
     def planets(self,*args):
+        pass
+    def ranComets(self,*args):
+        global randomComets
+        randomComets = self.cometOn.get()
         pass
     def simGen(self,*args):
         global numOfPlanets
@@ -174,7 +179,7 @@ class SolarSystem:
                 first.accelerateDueToGravity(second)
 
 class SolarSystemBody:
-    min_display_size = 10
+    min_display_size = 1
     display_log_base = 1.3
 
     def __init__(self,solar_system,mass,position = (0,0,0),velocity = (0,0,0),):
@@ -230,6 +235,11 @@ class Planet(SolarSystemBody):
     def __init__(self,solar_system,mass=10,position=(0,0,0),velocity=(0,0,0),):
         super(Planet, self).__init__(solar_system,mass,position,velocity)
         self.colour = next(Planet.colours)
+class Comets(SolarSystemBody):
+    def __init__(self,solar_system,mass=1,position=(0,0,0),velocity=(0,0,0),):
+        super(Comets, self).__init__(solar_system,mass,position,velocity)
+        self.colour='darkgrey'
+
 
 
 class Vector:
@@ -303,12 +313,12 @@ class Vector:
 if __name__=="__main__":
     app = Menu()
     app.mainloop()
-    solar_system = SolarSystem(400,projection_2d=True)
-    if numberOfSuns == 1:
+    solar_system = SolarSystem(500,projection_2d=True)
+    if numberOfSuns == 0:
         sun = Sun(solar_system)
-    elif numberOfSuns == 2:
-        sun = Sun(solar_system,mass=2500,position=(-150,-150,0))
-        sun2 = Sun(solar_system,mass=2500,position=(150,150,0))
+    elif numberOfSuns == 1:
+        sun = Sun(solar_system,mass=2500,position=(-150,-150,-150))
+        sun2 = Sun(solar_system,mass=2500,position=(150,150,150))
     else:
         pass
 
@@ -373,7 +383,17 @@ if __name__=="__main__":
             Planet(solar_system,mass=planet3Mass,position=(planetThreeXPosition,planetThreeYPosition,planetThreeZPosition),velocity=(planetThreeXVelocity,planetThreeYVelocity,planetThreeZVelocity),),
             Planet(solar_system,mass=planet4Mass,position=(planetFourXPosition,planetFourYPosition,planetFourZPosition),velocity=(planetFourXVelocity,planetFourYVelocity,planetFourZVelocity),),
             Planet(solar_system,mass=planet5Mass,position=(planetFiveXPosition,planetFiveYPosition,planetFiveZPosition),velocity=(planetFiveXVelocity,planetFiveYVelocity,planetFiveZVelocity)))      
-            
+
+    if randomComets ==1:
+        for x in range(10):
+            planet = (Comets(solar_system,mass=0.5,position=((randint(-300,300)),(randint(-300,300)),(randint(-300,300))),velocity=((randint(5,10)),(randint(5,10)),(randint(5,10)))))
+            time.sleep(2)
+            x=x+1     
+
+    else:
+        pass   
+
+
     while True:
         solar_system.calculateAllBodyInteractions()
         solar_system.update_all()
