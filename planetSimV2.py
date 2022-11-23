@@ -8,6 +8,14 @@ from random import randint
 import time
 
 
+global numberOfSuns
+numberOfSuns = 0
+global randomComets
+randomComets = 0
+global realism
+realism = 0
+
+
 
 class Menu(tk.Tk):
     def __init__(self):
@@ -29,6 +37,7 @@ class Menu(tk.Tk):
         self.planetGrav4 = tk.IntVar(self)
         self.planetGrav5 = tk.IntVar(self)
         self.cometOn = tk.IntVar(self)
+        self.realismOn = tk.IntVar(self)
         self.createWidgets()
         self.planetNumOption.set(0)
 
@@ -45,6 +54,8 @@ class Menu(tk.Tk):
         sunGenerate.grid(column=1,row=6,sticky=tk.W,**paddings)
         cometGen = ttk.Checkbutton(self, text='Random Comets',variable=self.cometOn,onvalue=1,offvalue=0,command=self.ranComets)
         cometGen.grid(column=0,row=6,sticky=tk.W,**paddings)
+        realismGen = ttk.Checkbutton(self,text='Realism',variable=self.realismOn,onvalue=1,offvalue=0,command=self.realismGenOn)
+        realismGen.grid(column=0,row=7,sticky=tk.W,**paddings)
     def planetNum(self,*args):
         self.planetCount = self.planetCount + 1
         label = ttk.Label(self, text='Planet 1 mass:')
@@ -88,6 +99,14 @@ class Menu(tk.Tk):
             planetSlider5.grid(column=1,row=5,sticky=tk.W)
         else:
             pass
+    def realismGenOn(self,*args):
+        global realism
+        if self.realismOn.get() == 1:
+            global twoD
+            twoD = False
+        else:
+            pass
+
     def planetAdd(self,*args):
         planetsToAdd = ttk.OptionMenu(self,self.planetOption,self.planetSelector[0],*self.planetSelector,command = self.planets)
         planetsToAdd.grid(column=0,row=1,sticky=tk.W)
@@ -95,8 +114,12 @@ class Menu(tk.Tk):
         pass
     def ranComets(self,*args):
         global randomComets
-        randomComets = self.cometOn.get()
-        pass
+        if self.cometOn.get() == 1:
+            global randomComets
+            randomComets = 1
+        else:
+
+            pass
     def simGen(self,*args):
         global numOfPlanets
         numOfPlanets = self.planetCount
@@ -130,21 +153,27 @@ class Menu(tk.Tk):
         self.destroy()
         pass
     def numOfSuns(self,*args):
-        global numberOfSuns
-        numberOfSuns = self.sunOption.get()
+        if self.sunOption.get()==1:
+            global numberOfSuns 
+            numberOfSuns=1
+        else:
+            pass
 class SolarSystem:
 
     def __init__(self,size,projection_2d=False):
         self.size = size
         self.projection_2d = projection_2d
         self.bodies = []
-
         self.fig, self.ax = plt.subplots(
             1,
             1,
             subplot_kw={"projection":"3d"},
             figsize = (self.size / 50, self.size / 50),
         )
+        if self.projection_2d == False:
+            self.ax.set_facecolor('black')
+        else:
+            pass
         self.fig.tight_layout()
         if self.projection_2d:
             self.ax.view_init(10, 0)
@@ -311,9 +340,18 @@ class Vector:
 
 
 if __name__=="__main__":
+    twoD = True
+    global bgOn
+    bgOn = False
     app = Menu()
     app.mainloop()
-    solar_system = SolarSystem(500,projection_2d=True)
+    projection_2d = twoD
+    solar_system = SolarSystem(500,projection_2d)
+    if projection_2d == True:
+        pass
+    elif projection_2d == False:
+        bgOn = True
+        pass
     if numberOfSuns == 0:
         sun = Sun(solar_system)
     elif numberOfSuns == 1:
