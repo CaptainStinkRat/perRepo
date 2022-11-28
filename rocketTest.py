@@ -25,18 +25,6 @@ class Menu(tk.Tk):
         self.coneSelector=('Pointed','Sloped','Barrel')
         self.coneOption = tk.StringVar(self)
         self.townLocation = tk.IntVar(self)
-        self.coneWeight = 0
-        self.fuelTankWeight = 0
-        self.thrusterWeight = 0
-        self.passangerWeight = 0
-        self.conePower = 0
-        self.fuelTankPower = 0
-        self.thrusterPower = 0
-        self.passangerPower = 0
-        global totalWeight 
-        totalWeight = 0
-        global totalPower
-        totalPower = 0
         self.createWidgets()
 
     def createWidgets(self):
@@ -66,62 +54,67 @@ class Menu(tk.Tk):
         self.rocketsetLabel.grid(column=0,row=3,sticky=tk.W,**paddings)
         
 
-    def rocketCreate(self,*args):
-        totalWeight = self.thrusterWeight+ self.fuelTankWeight + self.passangerWeight + self.coneWeight
-        totalPower = self.thrusterPower+ self.fuelTankPower + self.conePower
-        self.rocketsetLabel['text']=f'The total weight is: {totalWeight} and the total power is: {totalPower}'
-
     def thrustSelect(self,*args):
-        if self.thrusterOption == 'Small':
-            global thrusterPower 
-            thrusterPower = 1
-            global thrusterWeight
-            thrusterWeight = 1
-        elif self.thrusterOption == 'Medium':
-            self.thrusterPower = 3
-            self.thrusterWeight = 3
-        elif self.thrusterOption == 'Large':
-            self.thrusterPower = 5
-            self.thrusterWeight = 7
+        self.thrusterWeight = 0
+        self.thrusterPower = 0
+        if self.thrusterOption.get() == 'Small':
+            self.thrusterPower += 1
+            self.thrusterWeight += 1
+        elif self.thrusterOption.get() == 'Medium':
+            self.thrusterPower += 3
+            self.thrusterWeight += 3
+        elif self.thrusterOption.get() == 'Large':
+            self.thrusterPower += 5
+            self.thrusterWeight += 7
         else:
             pass
     def fuelTankSelect(self,*args):
-        if self.fuelTankOption == 'Small':
-            self.fuelTankPower = 1
-            self.fuelTankWeight = 3
-        elif self.fuelTankOption == 'Medium':
-            self.fuelTankPower = 2
-            self.fuelTankWeight = 6
-        elif self.fuelTankOption == 'Large':
-            self.fuelTankPower = 4
-            self.fuelTankWeight = 8
+        self.fuelTankPower = 0
+        self.fuelTankWeight = 0
+        if self.fuelTankOption.get() == 'Small':
+            self.fuelTankPower += 1
+            self.fuelTankWeight += 3
+        elif self.fuelTankOption.get() == 'Medium':
+            self.fuelTankPower += 2
+            self.fuelTankWeight += 6
+        elif self.fuelTankOption.get() == 'Large':
+            self.fuelTankPower += 4
+            self.fuelTankWeight += 8
         else:
             pass
     def passangerSelect(self,*args):
-        if self.passangerOption == 1:
-            self.passangerWeight = 1
-        elif self.passangerOption == 2:
-            self.passangerWeight = 2
-        elif self.passangerOption == 3:
-            self.passangerWeight = 3
-        elif self.passangerOption == 4:
-            self.passangerWeight = 4
+        self.passangerWeight = 0
+        if self.passangerOption.get() == 1:
+            self.passangerWeight += 1
+        elif self.passangerOption.get() == 2:
+            self.passangerWeight += 2
+        elif self.passangerOption.get() == 3:
+            self.passangerWeight += 3
+        elif self.passangerOption.get() == 4:
+            self.passangerWeight += 4
         else:
             pass
 
 
     def coneSelect(self,*args):
-        if self.coneOption == 'Pointed':
-            self.conePower = 2
-            self.coneWeight =1
-        elif self.coneOption == 'Sloped':
-            self.conePower = 3
-            self.coneWeight = 2
-        elif self.coneOption == 'Barrel':
-            self.conePower = 4
-            self.coneWeight = 3
+        self.conePower = 0
+        self.coneWeight = 0
+        if self.coneOption.get() == 'Pointed':
+            self.conePower = self.conePower + 2
+            self.coneWeight =self.coneWeight + 1
+        elif self.coneOption.get() == 'Sloped':
+            self.conePower = self.conePower + 3
+            self.coneWeight = self.coneWeight + 2
+        elif self.coneOption.get() == 'Barrel':
+            self.conePower = self.conePower + 4
+            self.coneWeight = self.coneWeight + 3
         else:
             pass
+    
+    def rocketCreate(self,*args):
+        self.totalWeight = self.thrusterWeight+ self.fuelTankWeight + self.passangerWeight + self.coneWeight
+        self.totalPower = self.thrusterPower+ self.fuelTankPower + self.conePower
+        self.rocketsetLabel['text']=f'The total weight is: {self.totalWeight} and the total power is: {self.totalPower}'
 
 if __name__=="__main__":
     app = Menu()
