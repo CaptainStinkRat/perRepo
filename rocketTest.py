@@ -26,6 +26,7 @@ class Menu(tk.Tk):
         self.coneSelector=('Pointed','Sloped','Barrel')
         self.coneOption = tk.StringVar(self)
         self.townLocation = tk.IntVar(self)
+        self.angleOption = tk.IntVar(self)
         self.createWidgets()
 
     def createWidgets(self):
@@ -48,7 +49,10 @@ class Menu(tk.Tk):
         coneLabel.grid(column=3,row=1,sticky=tk.W,**paddings)
         coneGenerate = ttk.OptionMenu(self,self.coneOption,self.coneSelector[0],*self.coneSelector,command=self.coneSelect)
         coneGenerate.grid(column=3,row=2,sticky=tk.W,**paddings)
-
+        angleSlider = tk.Scale(self,from_=90,to=10,orient='vertical',variable=self.angleOption)
+        angleSlider.grid(column=0,row=3,sticky=tk.W,**paddings)
+        angleSliderLabel = ttk.Label(self,text='Set angle in degrees')
+        angleSliderLabel.grid(column=0,row=4,sticky=tk.W,**paddings)
         rocketSet = ttk.Button(self,text='Create rocket',command=self.rocketCreate)
         rocketSet.grid(column=4,row=2,sticky=tk.W,**paddings)
         self.rocketsetLabel = ttk.Label(self,foreground='red')
@@ -131,17 +135,21 @@ if __name__=="__main__":
     totalMass = app.totalWeight
     propellantMass = app.wetMass
     totalDryMass = app.dryMass
-    burnTime = app.totalBurn
+    burnTime = 3.4
     totalImpulse = app.rocketPower
     averageThrust = totalImpulse/burnTime
     massFlowRate = propellantMass/burnTime
-    time = np.linspace(0,10,100,False)
-    index = int(np.where(time==burnTime) [0] + 1)
-    thrust = np.append(np.repeat(averageThrust, index), np.repeat(0,len(time)-index))
-    mass = np.append(np.repeat(totalMass, index) - time[0:index] * massFlowRate, np.repeat(totalDryMass,len(time)-index))
-    acceleration = thrust/mass - 9.81
-    plt.style.use('dark_background')
-    plt.plot(time,acceleration)
-    plt.ylabel("Acceleration")
-    plt.xlabel("Time")
-    plt.show()
+    fig = plt.figure(figsize=(4,4))
+    ax = fig.add_subplot(111,projection = '3d')
+
+    time = np.linspace(0, 10, 100, False)
+    print(time)
+    # index = int(np.where(time==burnTime)[0] + 1)
+    # thrust = np.append(np.repeat(averageThrust, index), np.repeat(0,len(time)-index))
+    # mass = np.append(np.repeat(totalMass, index) - time[0:index] * massFlowRate, np.repeat(totalDryMass,len(time)-index))
+    # acceleration = thrust/mass - 9.81
+    # plt.style.use('dark_background')
+    # plt.plot(time,acceleration)
+    # plt.ylabel("Acceleration")
+    # plt.xlabel("Time")
+    # plt.show()
