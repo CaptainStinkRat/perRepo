@@ -6,6 +6,7 @@ import math
 import itertools
 from random import randint
 import time
+import numpy as np
 
 
 
@@ -71,13 +72,17 @@ class Menu(tk.Tk):
     def fuelTankSelect(self,*args):
         self.fuelTankPower = 0
         self.fuelTankWeight = 0
+        self.fuelLevels = 0
         if self.fuelTankOption.get() == 'Small':
+            self.fuelLevels += 1
             self.fuelTankPower += 1
             self.fuelTankWeight += 3
         elif self.fuelTankOption.get() == 'Medium':
+            self.fuelLevels += 3
             self.fuelTankPower += 2
             self.fuelTankWeight += 6
         elif self.fuelTankOption.get() == 'Large':
+            self.fuelLevels += 6
             self.fuelTankPower += 4
             self.fuelTankWeight += 8
         else:
@@ -114,8 +119,29 @@ class Menu(tk.Tk):
     def rocketCreate(self,*args):
         self.totalWeight = self.thrusterWeight+ self.fuelTankWeight + self.passangerWeight + self.coneWeight
         self.totalPower = self.thrusterPower+ self.fuelTankPower + self.conePower
+        self.wetMass = self.fuelLevels 
+        self.dryMass = self.totalWeight - self.wetMass
+        self.rocketPower = self.totalPower * self.fuelLevels
+        self.totalBurn = self.rocketPower - self.totalWeight
         self.rocketsetLabel['text']=f'The total weight is: {self.totalWeight} and the total power is: {self.totalPower}'
 
 if __name__=="__main__":
     app = Menu()
     app.mainloop()
+    totalMass = app.totalWeight
+    propellantMass = app.wetMass
+    totalDryMass = app.dryMass
+    burnTime = app.totalBurn
+    totalImpulse = app.rocketPower
+    averageThrust = totalImpulse/burnTime
+    massFlowRate = propellantMass/burnTime
+    time = np.linspace(0,10,100,False)
+    index = int(np.where(time==burnTime) [0] + 1)
+    thrust = np.append(np.repeat(averageThrust, index), np.repeat(0,len(time)-index))
+    mass = np.append(np.repeat(totalMass, index) - time[0:index] * massFlowRate, np.repeat(totalDryMass,len(time)-index))
+    acceleration = thrust/mass - 9.81
+    plt.style.use('dark_background')
+    plt.plot(time,acceleration)
+    plt.ylabel("Acceleration")
+    plt.xlabel("Time")
+    plt.show()
