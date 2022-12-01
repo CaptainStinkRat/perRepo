@@ -50,10 +50,11 @@ class Menu(tk.Tk):
 
     def unitNum(self,*args):
         self.unitCount = self.unitCount + 1
-        self.firstGroundLabel = ttk.Label(self,text='First squad of ground units:')
-        self.firstGroundLabel.grid(column=0,row=2, sticky=tk.W)
-        self.firstGroundUnits = ttk.OptionMenu(self,self.unitOptionSelected,self.unitSelector[0],*self.unitSelector)
-        self.firstGroundUnits.grid(column=1,row=2,sticky=tk.W)
+        if self.unitCount == 1:
+            self.firstGroundLabel = ttk.Label(self,text='First squad of ground units:')
+            self.firstGroundLabel.grid(column=0,row=2, sticky=tk.W)
+            self.firstGroundUnits = ttk.OptionMenu(self,self.unitOptionSelected,self.unitSelector[0],*self.unitSelector)
+            self.firstGroundUnits.grid(column=1,row=2,sticky=tk.W)
         if self.unitCount == 2:
             self.secondGroundLabel = ttk.Label(self,text='Second squad of ground units:')
             self.secondGroundLabel.grid(column=0,row=3,sticky=tk.W)
@@ -97,12 +98,13 @@ class Menu(tk.Tk):
         self.outputLabel['text']=f'You selected: {self.armyOptionSelected.get()}'
         self.outputLabel['foreground']=f'{self.armyOptionSelected.get()}'
     def vehicleNum(self,*args):
-        self.firstVehicleLabel = ttk.Label(self,text='First squad of vehicle units:')
-        self.firstVehicleLabel.grid(column=2,row=2, sticky=tk.W)
-        self.firstVehicleUnits = ttk.OptionMenu(self,self.vehcileOptionSelected,self.vehicleSelector[0],*self.vehicleSelector)
-        self.firstVehicleUnits.grid(column=3,row=2,sticky=tk.W)
         self.vehicleCount = self.vehicleCount + 1
-        if self.vehicleCount == 2:
+        if self.vehicleCount == 1:
+            self.firstVehicleLabel = ttk.Label(self,text='First squad of vehicle units:')
+            self.firstVehicleLabel.grid(column=2,row=2, sticky=tk.W)
+            self.firstVehicleUnits = ttk.OptionMenu(self,self.vehcileOptionSelected,self.vehicleSelector[0],*self.vehicleSelector)
+            self.firstVehicleUnits.grid(column=3,row=2,sticky=tk.W)
+        elif self.vehicleCount == 2:
             self.secondVehicleLabel = ttk.Label(self,text='Second squad of vehicle units:')
             self.secondVehicleLabel.grid(column=2,row=3,sticky=tk.W)
             self.secondVehicleUnits = ttk.OptionMenu(self,self.secoundVehcileOptionSelected,self.vehicleSelector[0],*self.vehicleSelector)
