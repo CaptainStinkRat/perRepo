@@ -30,6 +30,7 @@ class Menu(tk.Tk):
         self.optionSelected = IntVar(self)
         self.unitCount = 0
         self.vehicleCount = 0
+        self.vehicleSquad = tk.IntVar(self)
         self.createWidgets()
         
 
@@ -79,8 +80,15 @@ class Menu(tk.Tk):
         if self.optionSelected.get() == 1:
             self.groundUnitLabelFrame = ttk.LabelFrame(self,text='Number of squads of ground units:')
             self.groundUnitLabelFrame.grid(column=0,row=1,padx=30,pady=30)
-            self.groundSquadSelect = tk.Scale(self.groundUnitLabelFrame, from_=10, to=60,orient='horizontal',variable=self.groundSquad)
+            self.groundSquadSelect = tk.Scale(self.groundUnitLabelFrame, from_=1, to=5,orient='horizontal',variable=self.groundSquad)
             self.groundSquadSelect.grid(column=0,row=1,ipadx=10,ipady=10)
+            self.vehicleUnitLabelFrame.destroy()
+        elif self.optionSelected.get() == 2:
+            self.vehicleUnitLabelFrame = ttk.LabelFrame(self,text='Number of squads of vehicle units:')
+            self.vehicleUnitLabelFrame.grid(column=0,row=1,padx=30,pady=30)
+            self.vehicleSquadSelect = tk.Scale(self.vehicleUnitLabelFrame, from_=1, to=5,orient='horizontal',variable=self.vehicleSquad)
+            self.vehicleSquadSelect.grid(column=0,row=1,ipadx=10,ipady=10)
+            self.groundUnitLabelFrame.destroy()
 
     def optionChanged(self,*args):
         pass
