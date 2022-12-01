@@ -89,6 +89,18 @@ class Menu(tk.Tk):
             self.vehicleSquadSelect = tk.Scale(self.vehicleUnitLabelFrame, from_=1, to=5,orient='horizontal',variable=self.vehicleSquad)
             self.vehicleSquadSelect.grid(column=0,row=1,ipadx=10,ipady=10)
             self.groundUnitLabelFrame.destroy()
+        elif self.optionSelected.get() == 3:
+            self.groundUnitLabelFrame.destroy()
+            self.vehicleUnitLabelFrame.destroy()
+            self.groundUnitLabelFrame = ttk.LabelFrame(self,text='Number of squads of ground units:')
+            self.groundUnitLabelFrame.grid(column=0,row=1,padx=30,pady=30)
+            self.groundSquadSelect = tk.Scale(self.groundUnitLabelFrame, from_=1, to=5,orient='horizontal',variable=self.groundSquad)
+            self.groundSquadSelect.grid(column=0,row=1,ipadx=10,ipady=10)
+
+            self.vehicleUnitLabelFrame = ttk.LabelFrame(self,text='Number of squads of vehicle units:')
+            self.vehicleUnitLabelFrame.grid(column=0,row=2,padx=30,pady=30)
+            self.vehicleSquadSelect = tk.Scale(self.vehicleUnitLabelFrame, from_=1, to=5,orient='horizontal',variable=self.vehicleSquad)
+            self.vehicleSquadSelect.grid(column=0,row=2,ipadx=10,ipady=10)
 
     def optionChanged(self,*args):
         pass
