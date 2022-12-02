@@ -470,48 +470,85 @@ if __name__=="__main__":
     if application.fifthVehcileOptionSelected.get() == 'Tank':
         tankTotal += application.vehicleSquadFifthNumSelect.get()
 
-
-    Chance = randint(0.50,.80)
-
-    footSoliderLossChance = math.floor(random.uniform(0,1/(1-Chance)))
-    footSoliderLoss = 0
-    footSoliderLoss -= footSoliderTotal * footSoliderLossChance
-    footSoliderTotalCost = 0
-    footSoliderTotalCost = footSoliderTotal * 100
-    footSoliderLossCost = footSoliderLoss * 100
-
-    pilotLossChance = math.floor(random.uniform(0,1/(1-Chance)))
-    pilotLoss = 0
-    pilotLoss -= footSoliderTotal * pilotLossChance
-    pilotTotalCost = 0
-    pilotTotalCost = pilotTotal * 200
-    pilotLossCost = pilotLoss * 200
-
-
-    engineerLossChance = math.floor(random.uniform(0,1/(1-Chance)))
-    engineerLoss = 0
-    engineerLoss -= engineerTotal*engineerLossChance
-    engineerLossCost = engineerLoss * 350
-    engineerTotalCost = 0
-    engineerTotalCost = engineerTotal * 350
-
-    airplaneLossChance = math.floor(random.uniform(0,1/(1-Chance)))
-    airplaneTotalCost = 0
-    airplaneLoss = 0
-    airplaneLoss -= airplaneTotal*airplaneLossChance
-    airplaneTotalCost = airplaneTotal * 20000
-
-    jeepLossChance = math.floor(random.uniform(0,1/(1-Chance)))
-    jeepLoss = 0
-    jeepTotalCost = 0
-    jeepLoss -= jeepTotal * jeepLossChance
-    jeepTotalCost = jeepTotal * 10000
-    tankLossChance = math.floor(random.uniform(0,1/(1-Chance)))
-    tankLoss = 0
-    tankLoss -= tankTotal*tankLossChance
-    tankTotalCost = 0
-    tankTotalCost = tankTotal * 50000
-
+    averageFootSoliderLoss = []
+    averagePilotLoss = []
+    averageEngineerLoss = []
+    averageAirplaneLoss = []
+    averageJeepLoss = []
+    averageTankLoss = []
     
+    averageFootSoliderCost = []
+    averagePilotCost = []
+    averageEngineerCost = []
+    averageAirplaneCost = []
+    averageJeepCost = []
+    averageTankCost = []
+
+    for x in range(10):
+        Chance = randint(0.50,.80)
+
+        footSoliderLossChance = math.floor(random.uniform(0,1/(1-Chance)))
+        footSoliderLoss = 0
+        footSoliderLoss -= footSoliderTotal * footSoliderLossChance
+        footSoliderTotalCost = 0
+        footSoliderTotalCost = footSoliderTotal * 100
+        footSoliderLossCost = footSoliderLoss * 100
+        averageFootSoliderTotal = footSoliderTotal + footSoliderLoss
+        averageFootSoliderLoss += averageFootSoliderTotal
+        averageFootSoliderCost += footSoliderTotalCost + footSoliderLossCost
+
+        pilotLossChance = math.floor(random.uniform(0,1/(1-Chance)))
+        pilotLoss = 0
+        pilotLoss -= footSoliderTotal * pilotLossChance
+        pilotTotalCost = 0
+        pilotTotalCost = pilotTotal * 200
+        pilotLossCost = pilotLoss * 200
+        averagePilotTotal = pilotTotal + pilotLoss
+        averagePilotLoss += averagePilotTotal
+        averagePilotCost += pilotTotalCost + pilotLossCost
+
+
+        engineerLossChance = math.floor(random.uniform(0,1/(1-Chance)))
+        engineerLoss = 0
+        engineerLoss -= engineerTotal*engineerLossChance
+        engineerLossCost = engineerLoss * 350
+        engineerTotalCost = 0
+        engineerTotalCost = engineerTotal * 350
+        averageEngineerTotal = engineerTotal + engineerLoss
+        averageEngineerLoss += averageEngineerTotal
+        averageEngineerCost += engineerTotalCost + engineerLossCost
+
+        airplaneLossChance = math.floor(random.uniform(0,1/(1-Chance)))
+        airplaneTotalCost = 0
+        airplaneLoss = 0
+        airplaneLoss -= airplaneTotal*airplaneLossChance
+        airplaneTotalCost = airplaneTotal * 20000
+        airplaneLossCost = airplaneLoss * 20000
+        averageAirplaneTotal = airplaneTotal + airplaneLoss
+        averageAirplaneLoss += averageAirplaneTotal
+        averageAirplaneCost += airplaneTotalCost + airplaneLossCost
+
+        jeepLossChance = math.floor(random.uniform(0,1/(1-Chance)))
+        jeepLoss = 0
+        jeepTotalCost = 0
+        jeepLoss -= jeepTotal * jeepLossChance
+        jeepTotalCost = jeepTotal * 10000
+        jeepLossCost = jeepLoss * 10000
+        averageJeepTotal = jeepTotal + jeepLoss
+        averageJeepLoss += averageJeepTotal
+        averageJeepCost += jeepTotalCost + jeepLossCost
+
+        tankLossChance = math.floor(random.uniform(0,1/(1-Chance)))
+        tankLoss = 0
+        tankLoss -= tankTotal*tankLossChance
+        tankTotalCost = 0
+        tankTotalCost = tankTotal * 50000
+        tankLossCost = tankTotal + tankLoss
+        averageTankTotal = tankTotal + tankLoss
+        averageTankLoss += averageTankTotal
+        averageTankCost += tankTotalCost + tankLossCost
+
+
+    X = 
 
     print(footSoliderTotal)
