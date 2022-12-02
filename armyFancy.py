@@ -7,6 +7,8 @@ import math
 import itertools
 from random import *
 import time
+import csv
+import re
 
 global unitCount
 
@@ -14,7 +16,7 @@ global unitCount
 class Menu(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.geometry("720x540")
+        self.geometry("720x560")
         self.title('Battle Sim')
         self.armySelector = ['Red','Blue','Green']
         self.unitSelector = ('Foot solider','Pilot','Engineer')
@@ -71,10 +73,14 @@ class Menu(tk.Tk):
         self.armyCompSelectVehicle.grid(column=3,row=0,ipadx=10,ipady=10)
         self.bothCompSelect = Radiobutton(self.unitSelectorLF,text = 'Both',variable = self.optionSelected, value = 3, command=self.unitsAdd)
         self.bothCompSelect.grid(column=4, row=0,ipadx=10,ipady=10)
-        armyColorSelectorMenu = ttk.OptionMenu(self.armyBuilderLabelFrame,self.armyOptionSelected,self.armySelector[0],*self.armySelector,command = self.optionChanged)
-        armyColorSelectorMenu.grid(column = 1, row = 0, ipadx=10,ipady=10)
+        self.armyColorSelectorMenu = ttk.OptionMenu(self.armyBuilderLabelFrame,self.armyOptionSelected,self.armySelector[0],*self.armySelector,command = self.optionChanged)
+        self.armyColorSelectorMenu.grid(column = 1, row = 0, ipadx=10,ipady=10)
         self.outputLabel = ttk.Label(self)
         self.outputLabel.grid(column=0,row=1,sticky=tk.W)
+
+        self.generateArmy = ttk.Button(self,text = 'Generate army!',command=self.armyGen)
+        self.generateArmy.grid(column=2,row=9,sticky=tk.W,**paddings)
+
         # unitGenerator = ttk.Button(self,text='Click to add ground units',command=self.unitNum)
         # unitGenerator.grid(column=0,row=9,sticky=tk.W,**paddings)
 
@@ -366,6 +372,20 @@ class Menu(tk.Tk):
             self.fourthGroundUnitNumSelect = ttk.OptionMenu(self.groundChoiceLabel,self.groundUnitSquadFourNumSelect,self.groundUnitSquadNum[0],*self.groundUnitSquadNum)
             self.fourthGroundUnitNumSelect.grid(column=2,row=5,sticky=tk.W)
             self.groundSquadSelect.configure(state="disabled")
+
+
+    def armyGen(self,*args):
+        fi = asksaveasfile(initialfile = 'UntitledArmy.csv',defaultextension='.csv',filetypes=[('All Files','*.*'),("CSV Documents","*.csv")])
+        fileName = re.split("'",str(fi))
+        fileNameCreated = fileName[1]
+        self.data = [self.groundUnitSquadOneNumSelect.get(),self.groundUnitSquadTwoNumSelect.get(),self.groundUnitSquadThreeNumSelect.get(),self.groundUnitSquadFourNumSelect.get(),self.groundUnitSquadFifthNumSelect.get(),self.vehicleSquadOneNumSelect.get(),self.vehicleSquadTwoNumSelect.get(),self.vehicleSquadThreeNumSelect.get(),self.vehicleSquadFourNumSelect.get(),self.vehicleSquadFifthNumSelect.get()]
+        self.header = [self.unitOptionSelected.get(),self.secoundUnitOptionSelected.get(),self.thirdUnitOptionSelected.get(),self.fourthUnitOptionSelected.get(),self.fifthUnitOptionSelected.get(),self.vehcileOptionSelected.get(),self.secoundVehcileOptionSelected.get(),self.thirdVehcileOptionSelected.get(),self.fourthVehcileOptionSelected.get(),self.fifthVehcileOptionSelected.get(),self.armyOptionSelected]
+        with open(fileNameCreated,'w',encoding='UTF8') as f:
+            writer = csv.writer(f)
+            writer.writerow(self.header)
+            writer.writerow(self.data)
+
+
 if __name__=="__main__":
     application = Menu()
     application.mainloop()
