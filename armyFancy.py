@@ -136,6 +136,9 @@ class Menu(tk.Tk):
             self.firstVehicleUnits = ttk.OptionMenu(self.vehicleChoiceLabel,self.vehcileOptionSelected,self.vehicleSelector[0],*self.vehicleSelector)
             self.firstVehicleUnits.grid(column=3,row=2,sticky=tk.W)
             self.vehicleSquadSelect.configure(state="disabled")
+
+            self.vehicleSquadOneNum = ttk.OptionMenu(self.vehicleChoiceLabel,self.vehicleSquadOneNumSelect,self.vehicleSquadNum[0],*self.vehicleSquadNum)
+            self.vehicleSquadOneNum.grid(column=4,row=2)
         elif self.vehicleSquad.get() == 2:
             self.firstVehicleLabel = ttk.Label(self.vehicleChoiceLabel,text='First squad of vehicle units:')
             self.firstVehicleLabel.grid(column=2,row=2, sticky=tk.W)
@@ -145,6 +148,11 @@ class Menu(tk.Tk):
             self.secondVehicleLabel.grid(column=2,row=3,sticky=tk.W)
             self.secondVehicleUnits = ttk.OptionMenu(self.vehicleChoiceLabel,self.secoundVehcileOptionSelected,self.vehicleSelector[0],*self.vehicleSelector)
             self.secondVehicleUnits.grid(column=3,row=3,sticky=tk.W)
+            self.vehicleSquadOneNum = ttk.OptionMenu(self.vehicleChoiceLabel,self.vehicleSquadOneNumSelect,self.vehicleSquadNum[0],*self.vehicleSquadNum)
+            self.vehicleSquadOneNum.grid(column=4,row=2)
+
+            self.vehicleSquadTwoNum = ttk.OptionMenu(self.vehicleChoiceLabel,self.vehicleSquadTwoNumSelect,self.vehicleSquadNum[0],*self.vehicleSquadNum)
+            self.vehicleSquadTwoNum.grid(column=4,row=3)
             self.vehicleSquadSelect.configure(state="disabled")
         elif self.vehicleSquad.get() == 3:
             self.firstVehicleLabel = ttk.Label(self.vehicleChoiceLabel,text='First squad of vehicle units:')
@@ -159,6 +167,16 @@ class Menu(tk.Tk):
             self.thirdVehicleLabel.grid(column=2,row=4,sticky=tk.W)
             self.thirdVehicleUnits = ttk.OptionMenu(self.vehicleChoiceLabel,self.thirdVehcileOptionSelected,self.vehicleSelector[0],*self.vehicleSelector)
             self.thirdVehicleUnits.grid(column=3,row=4,sticky=tk.W)
+
+            self.vehicleSquadOneNum = ttk.OptionMenu(self.vehicleChoiceLabel,self.vehicleSquadOneNumSelect,self.vehicleSquadNum[0],*self.vehicleSquadNum)
+            self.vehicleSquadOneNum.grid(column=4,row=2)
+
+            self.vehicleSquadTwoNum = ttk.OptionMenu(self.vehicleChoiceLabel,self.vehicleSquadTwoNumSelect,self.vehicleSquadNum[0],*self.vehicleSquadNum)
+            self.vehicleSquadTwoNum.grid(column=4,row=3)
+
+            self.vehicleSquadThreeNum = ttk.OptionMenu(self.vehicleChoiceLabel,self.vehicleSquadThreeNumSelect,self.vehicleSquadNum[0],*self.vehicleSquadNum)
+            self.vehicleSquadThreeNum.grid(column=4,row=4)            
+
             self.vehicleSquadSelect.configure(state="disabled")
         elif self.vehicleSquad.get() == 4:
             self.firstVehicleLabel = ttk.Label(self.vehicleChoiceLabel,text='First squad of vehicle units:')
@@ -177,6 +195,19 @@ class Menu(tk.Tk):
             self.fourthVehicleLabel.grid(column=2,row=5,sticky=tk.W)
             self.fourthVehicleUnits = ttk.OptionMenu(self.vehicleChoiceLabel,self.fourthVehcileOptionSelected,self.vehicleSelector[0],*self.vehicleSelector)
             self.fourthVehicleUnits.grid(column=3,row=5,sticky=tk.W)
+
+            self.vehicleSquadOneNum = ttk.OptionMenu(self.vehicleChoiceLabel,self.vehicleSquadOneNumSelect,self.vehicleSquadNum[0],*self.vehicleSquadNum)
+            self.vehicleSquadOneNum.grid(column=4,row=2)
+
+            self.vehicleSquadTwoNum = ttk.OptionMenu(self.vehicleChoiceLabel,self.vehicleSquadTwoNumSelect,self.vehicleSquadNum[0],*self.vehicleSquadNum)
+            self.vehicleSquadTwoNum.grid(column=4,row=3)
+
+            self.vehicleSquadThreeNum = ttk.OptionMenu(self.vehicleChoiceLabel,self.vehicleSquadThreeNumSelect,self.vehicleSquadNum[0],*self.vehicleSquadNum)
+            self.vehicleSquadThreeNum.grid(column=4,row=4) 
+
+            self.vehicleSquadFourNum = ttk.OptionMenu(self.vehicleChoiceLabel,self.vehicleSquadFourNumSelect,self.vehicleSquadNum[0],*self.vehicleSquadNum)
+            self.vehicleSquadFourNum.grid(column=4,row=5)
+
             self.vehicleSquadSelect.configure(state="disabled")
         elif self.vehicleSquad.get() == 5:
             self.firstVehicleLabel = ttk.Label(self.vehicleChoiceLabel,text='First squad of vehicle units:')
@@ -200,6 +231,22 @@ class Menu(tk.Tk):
             self.fifthVehicleLabel.grid(column=2,row=6,sticky=tk.W)
             self.fifthVehicleUnits = ttk.OptionMenu(self.vehicleChoiceLabel,self.fifthVehcileOptionSelected,self.vehicleSelector[0],*self.vehicleSelector)
             self.fifthVehicleUnits.grid(column=3,row=6,sticky=tk.W)
+
+            self.vehicleSquadOneNum = ttk.OptionMenu(self.vehicleChoiceLabel,self.vehicleSquadOneNumSelect,self.vehicleSquadNum[0],*self.vehicleSquadNum)
+            self.vehicleSquadOneNum.grid(column=4,row=2)
+
+            self.vehicleSquadTwoNum = ttk.OptionMenu(self.vehicleChoiceLabel,self.vehicleSquadTwoNumSelect,self.vehicleSquadNum[0],*self.vehicleSquadNum)
+            self.vehicleSquadTwoNum.grid(column=4,row=3)
+
+            self.vehicleSquadThreeNum = ttk.OptionMenu(self.vehicleChoiceLabel,self.vehicleSquadThreeNumSelect,self.vehicleSquadNum[0],*self.vehicleSquadNum)
+            self.vehicleSquadThreeNum.grid(column=4,row=4) 
+
+            self.vehicleSquadFourNum = ttk.OptionMenu(self.vehicleChoiceLabel,self.vehicleSquadFourNumSelect,self.vehicleSquadNum[0],*self.vehicleSquadNum)
+            self.vehicleSquadFourNum.grid(column=4,row=5)
+
+            self.vehicleSquadFiveNum = ttk.OptionMenu(self.vehicleChoiceLabel,self.vehicleSquadFifthNumSelect,self.vehicleSquadNum[0],*self.vehicleSquadNum)
+            self.vehicleSquadFiveNum.grid(column=4,row=6)
+
             self.vehicleSquadSelect.configure(state="disabled")
 
 
