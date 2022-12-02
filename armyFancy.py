@@ -457,6 +457,18 @@ if __name__=="__main__":
         jeepTotal += application.vehicleSquadThreeNumSelect.get()
     if application.thirdVehcileOptionSelected.get() == 'Tank':
         tankTotal += application.vehicleSquadThreeNumSelect.get()
-    
+    if application.fourthVehcileOptionSelected.get() == 'Airplane':
+        airplaneTotal += application.vehicleSquadFourNumSelect.get()
+    if application.fourthVehcileOptionSelected.get() == 'Jeep':
+        jeepTotal += application.vehicleSquadFourNumSelect.get()
+    if application.fourthVehcileOptionSelected.get() == 'Tank':
+        tankTotal += application.vehicleSquadFourNumSelect.get()
+    if application.fifthVehcileOptionSelected.get() == 'Airplane':
+        airplaneTotal += application.vehicleSquadFifthNumSelect.get()
+    if application.fifthVehcileOptionSelected.get() == 'Jeep':
+        jeepTotal += application.vehicleSquadFifthNumSelect.get()
+    if application.fifthVehcileOptionSelected.get() == 'Tank':
+        tankTotal += application.vehicleSquadFifthNumSelect.get()
+
 
     print(footSoliderTotal)
