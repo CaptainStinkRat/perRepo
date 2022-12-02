@@ -3,13 +3,13 @@ from tkinter import *
 from tkinter import ttk
 from tkinter.filedialog import asksaveasfile
 import matplotlib.pyplot as plt
-import itertools
 from random import *
-import time
 import csv
 import re
-import math 
-import random
+import statistics
+import numpy as np
+import math
+
 
 global unitCount
 
@@ -471,17 +471,44 @@ if __name__=="__main__":
         tankTotal += application.vehicleSquadFifthNumSelect.get()
 
 
+    Chance = randint(0.50,.80)
+
+    footSoliderLossChance = math.floor(random.uniform(0,1/(1-Chance)))
+    footSoliderLoss = 0
+    footSoliderLoss -= footSoliderTotal * footSoliderLossChance
     footSoliderTotalCost = 0
     footSoliderTotalCost = footSoliderTotal * 100
+    footSoliderLossCost = footSoliderLoss * 100
+
+    pilotLossChance = math.floor(random.uniform(0,1/(1-Chance)))
+    pilotLoss = 0
+    pilotLoss -= footSoliderTotal * pilotLossChance
     pilotTotalCost = 0
     pilotTotalCost = pilotTotal * 200
+    pilotLossCost = pilotLoss * 200
+
+
+    engineerLossChance = math.floor(random.uniform(0,1/(1-Chance)))
+    engineerLoss = 0
+    engineerLoss -= engineerTotal*engineerLossChance
+    engineerLossCost = engineerLoss * 350
     engineerTotalCost = 0
     engineerTotalCost = engineerTotal * 350
 
+    airplaneLossChance = math.floor(random.uniform(0,1/(1-Chance)))
     airplaneTotalCost = 0
+    airplaneLoss = 0
+    airplaneLoss -= airplaneTotal*airplaneLossChance
     airplaneTotalCost = airplaneTotal * 20000
+
+    jeepLossChance = math.floor(random.uniform(0,1/(1-Chance)))
+    jeepLoss = 0
     jeepTotalCost = 0
+    jeepLoss -= jeepTotal * jeepLossChance
     jeepTotalCost = jeepTotal * 10000
+    tankLossChance = math.floor(random.uniform(0,1/(1-Chance)))
+    tankLoss = 0
+    tankLoss -= tankTotal*tankLossChance
     tankTotalCost = 0
     tankTotalCost = tankTotal * 50000
 
