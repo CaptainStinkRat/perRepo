@@ -400,12 +400,44 @@ if __name__=="__main__":
     application.mainloop()
     rows = []
     print(application.fileNameCreated)
-
+    footSoliderTotal = 0
+    pilotTotal = 0
+    engineerTotal = 0
     with open(application.fileNameCreated,'r') as file:
-         csvreader = csv.reader(file)
-         header = next(csvreader)
-         for row in csvreader:
+        csvreader = csv.reader(file)
+        header = next(csvreader)
+        for row in csvreader:
             rows.append(row)
+    if header[0] == 'Foot solider':
+        footSoliderTotal += rows[0]
+        if header[1] == 'Foot solider':
+            footSoliderTotal +=rows[1]
+            if header[2] == 'Foot solider':
+                footSoliderTotal +=rows[2]
+                if header[3] == 'Foot solider':
+                    footSoliderTotal +=rows[3]
+                    if header[4] == 'Foot solider':
+                        footSoliderTotal +=rows[4]
+    elif header[0] == 'Pilot':
+        pilotTotal += rows[0]
+        if header[1] == 'Pilot':
+            pilotTotal += rows[1]
+            if header[2] == 'Pilot':
+                pilotTotal += rows[2]
+                if header[3] == 'Pilot':
+                    pilotTotal += rows[3]
+                    if header[4] == 'Pilot':
+                        pilotTotal += rows[4]
+    elif header[0] == 'Engineer':
+        engineerTotal += rows[0]
+        if header[1] == 'Engineer':
+            engineerTotal += rows[1]
+            if header[2] == 'Engineer':
+                engineerTotal += rows[2]
+                if header[3] == 'Engineer':
+                    engineerTotal += rows[3]
+                    if header[4] == 'Engineer':
+                        engineerTotal += rows[4]
     print(header)
     print(rows)
 
