@@ -19,6 +19,23 @@ class Menu(tk.Tk):
         self.armySelector = ['Red','Blue','Green']
         self.unitSelector = ('Foot solider','Pilot','Engineer')
         self.vehicleSelector = ('Airplane','Jeep','Tank')
+
+        self.vehicleSquadNum = [10,20,30,40]
+    
+        self.vehicleSquadOneNumSelect = IntVar(self)
+        self.vehicleSquadTwoNumSelect = IntVar(self)
+        self.vehicleSquadThreeNumSelect = IntVar(self)
+        self.vehicleSquadFourNumSelect = IntVar(self)
+        self.vehicleSquadFifthNumSelect = IntVar(self)
+        
+        self.groundUnitSquadNum = [10,20,30,40]
+
+        self.groundUnitSquadOneNumSelect = IntVar(self)
+        self.groundUnitSquadTwoNumSelect = IntVar(self)
+        self.groundUnitSquadThreeNumSelect = IntVar(self)
+        self.groundUnitSquadFourNumSelect = IntVar(self)
+        self.groundUnitSquadFifthNumSelect = IntVar(self)
+
         self.armyOptionSelected = tk.StringVar(self)
         self.unitOptionSelected = tk.StringVar(self)
         self.vehcileOptionSelected = tk.StringVar(self)
@@ -194,6 +211,8 @@ class Menu(tk.Tk):
             self.firstGroundLabel.grid(column=0,row=2, sticky=tk.W)
             self.firstGroundUnits = ttk.OptionMenu(self.groundChoiceLabel,self.unitOptionSelected,self.unitSelector[0],*self.unitSelector)
             self.firstGroundUnits.grid(column=1,row=2,sticky=tk.W)
+            self.firstGroundUnitNumSelect = ttk.OptionMenu(self.groundChoiceLabel,self.groundUnitSquadOneNumSelect,self.groundUnitSquadNum[0],*self.groundUnitSquadNum)
+            self.firstGroundUnitNumSelect.grid(column=2,row=2,sticky=tk.W)
             self.groundSquadSelect.configure(state="disabled")
         if self.groundSquad.get() == 2:
             self.firstGroundLabel = ttk.Label(self.groundChoiceLabel,text='First squad of ground units:')
@@ -204,6 +223,10 @@ class Menu(tk.Tk):
             self.secondGroundLabel.grid(column=0,row=3,sticky=tk.W)
             self.secondGroundUnits = ttk.OptionMenu(self.groundChoiceLabel,self.secoundUnitOptionSelected,self.unitSelector[0],*self.unitSelector)
             self.secondGroundUnits.grid(column=1,row=3,sticky=tk.W)
+            self.firstGroundUnitNumSelect = ttk.OptionMenu(self.groundChoiceLabel,self.groundUnitSquadOneNumSelect,self.groundUnitSquadNum[0],*self.groundUnitSquadNum)
+            self.firstGroundUnitNumSelect.grid(column=2,row=2,sticky=tk.W)
+            self.secondGroundUnitNumSelect = ttk.OptionMenu(self.groundChoiceLabel,self.groundUnitSquadTwoNumSelect,self.groundUnitSquadNum[0],*self.groundUnitSquadNum)
+            self.secondGroundUnitNumSelect.grid(column=2,row=3,sticky=tk.W)
             self.groundSquadSelect.configure(state="disabled")
         if self.groundSquad.get() == 3:
             self.firstGroundLabel = ttk.Label(self.groundChoiceLabel,text='First squad of ground units:')
@@ -219,6 +242,13 @@ class Menu(tk.Tk):
             self.thirdGroundLabel.grid(column=0,row=4,sticky=tk.W)
             self.thirdGroundUnits = ttk.OptionMenu(self.groundChoiceLabel,self.thirdUnitOptionSelected,self.unitSelector[0],*self.unitSelector)
             self.thirdGroundUnits.grid(column=1,row=4,sticky=tk.W)
+            self.firstGroundUnitNumSelect = ttk.OptionMenu(self.groundChoiceLabel,self.groundUnitSquadOneNumSelect,self.groundUnitSquadNum[0],*self.groundUnitSquadNum)
+            self.firstGroundUnitNumSelect.grid(column=2,row=2,sticky=tk.W)
+            self.secondGroundUnitNumSelect = ttk.OptionMenu(self.groundChoiceLabel,self.groundUnitSquadTwoNumSelect,self.groundUnitSquadNum[0],*self.groundUnitSquadNum)
+            self.secondGroundUnitNumSelect.grid(column=2,row=3,sticky=tk.W)
+
+            self.thirdGroundUnitNumSelect = ttk.OptionMenu(self.groundChoiceLabel,self.groundUnitSquadThreeNumSelect,self.groundUnitSquadNum[0],*self.groundUnitSquadNum)
+            self.thirdGroundUnitNumSelect.grid(column=2,row=4,sticky=tk.W)
             self.groundSquadSelect.configure(state="disabled")
         if self.groundSquad.get() == 4:
             self.firstGroundLabel = ttk.Label(self.groundChoiceLabel,text='First squad of ground units:')
@@ -239,6 +269,18 @@ class Menu(tk.Tk):
             self.fourthGroundLabel.grid(column=0,row=5,sticky=tk.W)
             self.fourthGroundUnits = ttk.OptionMenu(self.groundChoiceLabel,self.fourthUnitOptionSelected,self.unitSelector[0],*self.unitSelector)
             self.fourthGroundUnits.grid(column=1,row=5,sticky=tk.W)
+
+            self.firstGroundUnitNumSelect = ttk.OptionMenu(self.groundChoiceLabel,self.groundUnitSquadOneNumSelect,self.groundUnitSquadNum[0],*self.groundUnitSquadNum)
+            self.firstGroundUnitNumSelect.grid(column=2,row=2,sticky=tk.W)
+            self.secondGroundUnitNumSelect = ttk.OptionMenu(self.groundChoiceLabel,self.groundUnitSquadTwoNumSelect,self.groundUnitSquadNum[0],*self.groundUnitSquadNum)
+            self.secondGroundUnitNumSelect.grid(column=2,row=3,sticky=tk.W)
+
+            self.thirdGroundUnitNumSelect = ttk.OptionMenu(self.groundChoiceLabel,self.groundUnitSquadThreeNumSelect,self.groundUnitSquadNum[0],*self.groundUnitSquadNum)
+            self.thirdGroundUnitNumSelect.grid(column=2,row=4,sticky=tk.W)
+
+            self.fourthGroundUnitNumSelect = ttk.OptionMenu(self.groundChoiceLabel,self.groundUnitSquadFourNumSelect,self.groundUnitSquadNum[0],*self.groundUnitSquadNum)
+            self.fourthGroundUnitNumSelect.grid(column=2,row=5,sticky=tk.W)
+
             self.groundSquadSelect.configure(state="disabled")
         if self.groundSquad.get() == 5:
             self.firstGroundLabel = ttk.Label(self.groundChoiceLabel,text='First squad of ground units:')
@@ -264,6 +306,18 @@ class Menu(tk.Tk):
             self.fifthGroundLabel.grid(column=0,row=6,sticky=tk.W)
             self.fifthGroundUnits = ttk.OptionMenu(self.groundChoiceLabel,self.fifthUnitOptionSelected,self.unitSelector[0],*self.unitSelector)
             self.fifthGroundUnits.grid(column=1,row=6,sticky=tk.W)
+            self.fifthGroundUnitNumSelect = ttk.OptionMenu(self.groundChoiceLabel,self.groundUnitSquadFifthNumSelect,self.groundUnitSquadNum[0],*self.groundUnitSquadNum)
+            self.fifthGroundUnitNumSelect.grid(column=2,row=6,sticky=tk.W)
+            self.firstGroundUnitNumSelect = ttk.OptionMenu(self.groundChoiceLabel,self.groundUnitSquadOneNumSelect,self.groundUnitSquadNum[0],*self.groundUnitSquadNum)
+            self.firstGroundUnitNumSelect.grid(column=2,row=2,sticky=tk.W)
+            self.secondGroundUnitNumSelect = ttk.OptionMenu(self.groundChoiceLabel,self.groundUnitSquadTwoNumSelect,self.groundUnitSquadNum[0],*self.groundUnitSquadNum)
+            self.secondGroundUnitNumSelect.grid(column=2,row=3,sticky=tk.W)
+
+            self.thirdGroundUnitNumSelect = ttk.OptionMenu(self.groundChoiceLabel,self.groundUnitSquadThreeNumSelect,self.groundUnitSquadNum[0],*self.groundUnitSquadNum)
+            self.thirdGroundUnitNumSelect.grid(column=2,row=4,sticky=tk.W)
+
+            self.fourthGroundUnitNumSelect = ttk.OptionMenu(self.groundChoiceLabel,self.groundUnitSquadFourNumSelect,self.groundUnitSquadNum[0],*self.groundUnitSquadNum)
+            self.fourthGroundUnitNumSelect.grid(column=2,row=5,sticky=tk.W)
             self.groundSquadSelect.configure(state="disabled")
 if __name__=="__main__":
     application = Menu()
