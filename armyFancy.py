@@ -82,12 +82,16 @@ class Menu(tk.Tk):
             self.groundUnitLabelFrame.grid(column=0,row=1,padx=30,pady=30)
             self.groundSquadSelect = tk.Scale(self.groundUnitLabelFrame, from_=1, to=5,orient='horizontal',variable=self.groundSquad)
             self.groundSquadSelect.grid(column=0,row=1,ipadx=10,ipady=10)
+            self.groundSquadSet = ttk.Button(self.groundUnitLabelFrame,text = 'Set ground squad size',command=self.groundUnitCreate)
+            self.groundSquadSet.grid(column=1,row=1,ipadx=10,ipady=10)
             self.vehicleUnitLabelFrame.destroy()
         elif self.optionSelected.get() == 2:
             self.vehicleUnitLabelFrame = ttk.LabelFrame(self,text='Number of squads of vehicle units:')
             self.vehicleUnitLabelFrame.grid(column=0,row=1,padx=30,pady=30)
             self.vehicleSquadSelect = tk.Scale(self.vehicleUnitLabelFrame, from_=1, to=5,orient='horizontal',variable=self.vehicleSquad)
             self.vehicleSquadSelect.grid(column=0,row=1,ipadx=10,ipady=10)
+            self.vehicleSquadSet = ttk.Button(self.vehicleUnitLabelFrame,text = 'Set vehicle squad size',command=self.vehicleCreate)
+            self.vehicleSquadSet.grid(column=1,row=1,ipadx=10,ipady=10)
             self.groundUnitLabelFrame.destroy()
         elif self.optionSelected.get() == 3:
             self.groundUnitLabelFrame.destroy()
@@ -96,12 +100,14 @@ class Menu(tk.Tk):
             self.groundUnitLabelFrame.grid(column=0,row=1,padx=30,pady=30)
             self.groundSquadSelect = tk.Scale(self.groundUnitLabelFrame, from_=1, to=5,orient='horizontal',variable=self.groundSquad)
             self.groundSquadSelect.grid(column=0,row=1,ipadx=10,ipady=10)
-
+            self.groundSquadSet = ttk.Button(self.groundUnitLabelFrame,text = 'Set ground squad size',command=self.vehicleCreate)
+            self.groundSquadSet.grid(column=1,row=1,ipadx=10,ipady=10)
             self.vehicleUnitLabelFrame = ttk.LabelFrame(self,text='Number of squads of vehicle units:')
             self.vehicleUnitLabelFrame.grid(column=0,row=2,padx=30,pady=30)
             self.vehicleSquadSelect = tk.Scale(self.vehicleUnitLabelFrame, from_=1, to=5,orient='horizontal',variable=self.vehicleSquad)
             self.vehicleSquadSelect.grid(column=0,row=2,ipadx=10,ipady=10)
-
+            self.vehicleSquadSet = ttk.Button(self.vehicleUnitLabelFrame,text = 'Set vehicle squad size',command=self.vehicleCreate)
+            self.vehicleSquadSet.grid(column=1,row=2,ipadx=10,ipady=10)
     def optionChanged(self,*args):
         pass
         # self.outputLabel['text']=f'You selected: {self.armyOptionSelected.get()}'
@@ -127,6 +133,12 @@ class Menu(tk.Tk):
             self.thirdVehicleUnits.grid(column=3,row=4,sticky=tk.W)
         
 
+    def vehicleCreate(self,*args):
+        pass
+
+
+    def groundUnitCreate(self,*args):
+        pass
 if __name__=="__main__":
     application = Menu()
     application.mainloop()
