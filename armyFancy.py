@@ -471,4 +471,20 @@ if __name__=="__main__":
         tankTotal += application.vehicleSquadFifthNumSelect.get()
 
 
+    footSoliderTotalCost = 0
+    footSoliderTotalCost = footSoliderTotal * 100
+    pilotTotalCost = 0
+    pilotTotalCost = pilotTotal * 200
+    engineerTotalCost = 0
+    engineerTotalCost = engineerTotal * 350
+
+    airplaneTotalCost = 0
+    airplaneTotalCost = airplaneTotal * 20000
+    jeepTotalCost = 0
+    jeepTotalCost = jeepTotal * 10000
+    tankTotalCost = 0
+    tankTotalCost = tankTotal * 50000
+
+    
+
     print(footSoliderTotal)
