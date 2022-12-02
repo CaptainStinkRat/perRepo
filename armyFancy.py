@@ -9,6 +9,7 @@ import re
 import statistics
 import numpy as np
 import math
+import random
 
 
 global unitCount
@@ -385,21 +386,13 @@ class Menu(tk.Tk):
             writer = csv.writer(f)
             writer.writerow(self.header)
             writer.writerow(self.data)
+        self.destroy()
 
-
-class fight:
-    def __init__(self):
-        pass
-
-
-    def fight(self,chance):
-        pass
 
 if __name__=="__main__":
     application = Menu()
     application.mainloop()
     rows = []
-    print(application.fileNameCreated)
     footSoliderTotal = 0
     pilotTotal = 0
     engineerTotal = 0
@@ -484,8 +477,9 @@ if __name__=="__main__":
     averageJeepCost = []
     averageTankCost = []
 
-    for x in range(10):
-        Chance = randint(0.50,.80)
+    for x in range(100):
+        intChance = random.choice(range(1,10))
+        Chance = intChance/10
 
         footSoliderLossChance = math.floor(random.uniform(0,1/(1-Chance)))
         footSoliderLoss = 0
@@ -494,8 +488,8 @@ if __name__=="__main__":
         footSoliderTotalCost = footSoliderTotal * 100
         footSoliderLossCost = footSoliderLoss * 100
         averageFootSoliderTotal = footSoliderTotal + footSoliderLoss
-        averageFootSoliderLoss += averageFootSoliderTotal
-        averageFootSoliderCost += footSoliderTotalCost + footSoliderLossCost
+        averageFootSoliderLoss.append(averageFootSoliderTotal)
+        averageFootSoliderCost.append(footSoliderTotalCost + footSoliderLossCost)
 
         pilotLossChance = math.floor(random.uniform(0,1/(1-Chance)))
         pilotLoss = 0
@@ -504,8 +498,8 @@ if __name__=="__main__":
         pilotTotalCost = pilotTotal * 200
         pilotLossCost = pilotLoss * 200
         averagePilotTotal = pilotTotal + pilotLoss
-        averagePilotLoss += averagePilotTotal
-        averagePilotCost += pilotTotalCost + pilotLossCost
+        averagePilotLoss.append(averagePilotTotal)
+        averagePilotCost.append(pilotTotalCost + pilotLossCost)
 
 
         engineerLossChance = math.floor(random.uniform(0,1/(1-Chance)))
@@ -515,8 +509,8 @@ if __name__=="__main__":
         engineerTotalCost = 0
         engineerTotalCost = engineerTotal * 350
         averageEngineerTotal = engineerTotal + engineerLoss
-        averageEngineerLoss += averageEngineerTotal
-        averageEngineerCost += engineerTotalCost + engineerLossCost
+        averageEngineerLoss.append(averageEngineerTotal)
+        averageEngineerCost.append(engineerTotalCost + engineerLossCost)
 
         airplaneLossChance = math.floor(random.uniform(0,1/(1-Chance)))
         airplaneTotalCost = 0
@@ -525,8 +519,8 @@ if __name__=="__main__":
         airplaneTotalCost = airplaneTotal * 20000
         airplaneLossCost = airplaneLoss * 20000
         averageAirplaneTotal = airplaneTotal + airplaneLoss
-        averageAirplaneLoss += averageAirplaneTotal
-        averageAirplaneCost += airplaneTotalCost + airplaneLossCost
+        averageAirplaneLoss.append(averageAirplaneTotal)
+        averageAirplaneCost.append(airplaneTotalCost + airplaneLossCost)
 
         jeepLossChance = math.floor(random.uniform(0,1/(1-Chance)))
         jeepLoss = 0
@@ -535,8 +529,8 @@ if __name__=="__main__":
         jeepTotalCost = jeepTotal * 10000
         jeepLossCost = jeepLoss * 10000
         averageJeepTotal = jeepTotal + jeepLoss
-        averageJeepLoss += averageJeepTotal
-        averageJeepCost += jeepTotalCost + jeepLossCost
+        averageJeepLoss.append(averageJeepTotal)
+        averageJeepCost.append(jeepTotalCost + jeepLossCost)
 
         tankLossChance = math.floor(random.uniform(0,1/(1-Chance)))
         tankLoss = 0
@@ -545,10 +539,36 @@ if __name__=="__main__":
         tankTotalCost = tankTotal * 50000
         tankLossCost = tankTotal + tankLoss
         averageTankTotal = tankTotal + tankLoss
-        averageTankLoss += averageTankTotal
-        averageTankCost += tankTotalCost + tankLossCost
+        averageTankLoss.append(averageTankTotal)
+        averageTankCost.append(tankTotalCost + tankLossCost)
 
 
-    X = 
+    X = averageFootSoliderLoss
+    Y = averageFootSoliderCost
+    X1 = averagePilotLoss
+    Y1 = averagePilotCost
+    X2 = averageEngineerLoss
+    Y2 = averageEngineerCost
+    X3 = averageAirplaneLoss
+    Y3= averageAirplaneCost
+    X4 = averageJeepLoss
+    Y4 = averageJeepCost
+    X5 = averageTankLoss
+    Y5 = averageTankCost
+    plt.scatter(X,Y,s=30,c='red',marker='^',label='Foot Solider')
+    plt.scatter(X1,Y1,s=30,c='blue',marker='H',label='Pilot')
+    plt.scatter(X2,Y2,s=30,c='brown',marker='1',label='Engineer')
+    plt.scatter(X3,Y3,s=30,c='green',marker='s',label='Airplane')
+    plt.scatter(X4,Y4,s=30,c='purple',marker='D',label='Jeep')
+    plt.scatter(X5,Y5,s=30,c='black',marker='d',label='Tank')
+    plt.legend(loc='best')
 
-    print(footSoliderTotal)
+
+    plt.xlim(0,50)
+    plt.ylim(0,2500)
+
+    plt.title('Average loss in unit cost and count')
+    plt.xlabel('Average unit loss')
+    plt.ylabel('Average cost')
+
+    plt.show()
