@@ -403,45 +403,60 @@ if __name__=="__main__":
     footSoliderTotal = 0
     pilotTotal = 0
     engineerTotal = 0
-    with open(application.fileNameCreated,'r') as file:
-        csvreader = csv.reader(file)
-        header = next(csvreader)
-        for row in csvreader:
-            rows.append(row)
-    if header[0] == 'Foot solider':
-        firstSquadSolider = 0
+    airplaneTotal = 0
+    tankTotal = 0
+    jeepTotal = 0
+    
         
-        footSoliderTotal += int(rows[0])
-        if header[1] == 'Foot solider':
-            footSoliderTotal +=int(rows[1])
-            if header[2] == 'Foot solider':
-                footSoliderTotal +=int(rows[2])
-                if header[3] == 'Foot solider':
-                    footSoliderTotal +=int(rows[3])
-                    if header[4] == 'Foot solider':
-                        footSoliderTotal +=(rows[4])
-    elif header[0] == 'Pilot':
-        pilotTotal += rows[0]
-        if header[1] == 'Pilot':
-            pilotTotal += rows[1]
-            if header[2] == 'Pilot':
-                pilotTotal += rows[2]
-                if header[3] == 'Pilot':
-                    pilotTotal += rows[3]
-                    if header[4] == 'Pilot':
-                        pilotTotal += rows[4]
-    elif header[0] == 'Engineer':
-        engineerTotal += rows[0]
-        if header[1] == 'Engineer':
-            engineerTotal += rows[1]
-            if header[2] == 'Engineer':
-                engineerTotal += rows[2]
-                if header[3] == 'Engineer':
-                    engineerTotal += rows[3]
-                    if header[4] == 'Engineer':
-                        engineerTotal += rows[4]
-    print(header)
-    print(rows)
+    if application.unitOptionSelected.get() == 'Foot solider':
+        footSoliderTotal += application.groundUnitSquadOneNumSelect.get()
+    if application.unitOptionSelected.get() == 'Pilot':
+        pilotTotal += application.groundUnitSquadOneNumSelect.get()
+    if application.unitOptionSelected.get() == 'Engineer':
+        engineerTotal += application.groundUnitSquadOneNumSelect.get()
+    if application.secoundUnitOptionSelected.get() == 'Foot solider':
+        footSoliderTotal += application.groundUnitSquadTwoNumSelect.get()
+    if application.secoundUnitOptionSelected.get() == 'Pilot':
+        pilotTotal += application.groundUnitSquadTwoNumSelect.get()
+    if application.secoundUnitOptionSelected.get() == 'Engineer':
+        engineerTotal += application.groundUnitSquadTwoNumSelect.get()
+    if application.thirdUnitOptionSelected.get() == 'Foot solider':
+        footSoliderTotal += application.groundUnitSquadThreeNumSelect.get()
+    if application.thirdUnitOptionSelected.get() == 'Pilot':
+        pilotTotal += application.groundUnitSquadThreeNumSelect.get()
+    if application.thirdUnitOptionSelected.get() == 'Engineer':
+        engineerTotal += application.groundUnitSquadThreeNumSelect.get()
+    if application.fourthUnitOptionSelected.get() == 'Foot solider':
+        footSoliderTotal += application.groundUnitSquadFourNumSelect.get()
+    if application.fourthUnitOptionSelected.get() == 'Pilot':
+        pilotTotal += application.groundUnitSquadFourNumSelect.get()
+    if application.fourthUnitOptionSelected.get() == 'Engineer':
+        engineerTotal += application.groundUnitSquadFourNumSelect.get()
+    if application.fifthUnitOptionSelected.get() == 'Foot solider':
+       footSoliderTotal += application.groundUnitSquadFifthNumSelect.get() 
+    if application.fifthUnitOptionSelected.get() == 'Pilot':
+        pilotTotal += application.groundUnitSquadFifthNumSelect.get()
+    if application.fifthUnitOptionSelected.get() == 'Engineer':
+        engineerTotal += application.groundUnitSquadFifthNumSelect.get()
 
+    if application.vehcileOptionSelected.get() == 'Airplane':
+        airplaneTotal += application.vehicleSquadOneNumSelect.get()
+    if application.vehcileOptionSelected.get() == 'Jeep':
+        jeepTotal += application.vehicleSquadOneNumSelect.get()
+    if application.vehcileOptionSelected.get() == 'Tank':
+        tankTotal += application.vehicleSquadOneNumSelect.get()
+    if application.secoundVehcileOptionSelected.get() =='Airplane':
+        airplaneTotal += application.vehicleSquadTwoNumSelect.get()
+    if application.secoundVehcileOptionSelected.get() == 'Jeep':
+        jeepTotal += application.vehicleSquadTwoNumSelect.get()
+    if application.secoundVehcileOptionSelected.get() == 'Tank':
+        tankTotal += application.vehicleSquadTwoNumSelect.get()
+    if application.thirdVehcileOptionSelected.get() == 'Airplane':
+        airplaneTotal += application.vehicleSquadThreeNumSelect.get()
+    if application.thirdVehcileOptionSelected.get() == 'Jeep':
+        jeepTotal += application.vehicleSquadThreeNumSelect.get()
+    if application.thirdVehcileOptionSelected.get() == 'Tank':
+        tankTotal += application.vehicleSquadThreeNumSelect.get()
+    
 
-
+    print(footSoliderTotal)
