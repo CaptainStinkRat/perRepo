@@ -3,12 +3,13 @@ from tkinter import *
 from tkinter import ttk
 from tkinter.filedialog import asksaveasfile
 import matplotlib.pyplot as plt
-import math
 import itertools
 from random import *
 import time
 import csv
 import re
+import math 
+import random
 
 global unitCount
 
@@ -377,18 +378,36 @@ class Menu(tk.Tk):
     def armyGen(self,*args):
         fi = asksaveasfile(initialfile = 'UntitledArmy.csv',defaultextension='.csv',filetypes=[('All Files','*.*'),("CSV Documents","*.csv")])
         fileName = re.split("'",str(fi))
-        fileNameCreated = fileName[1]
+        self.fileNameCreated = fileName[1]
         self.data = [self.groundUnitSquadOneNumSelect.get(),self.groundUnitSquadTwoNumSelect.get(),self.groundUnitSquadThreeNumSelect.get(),self.groundUnitSquadFourNumSelect.get(),self.groundUnitSquadFifthNumSelect.get(),self.vehicleSquadOneNumSelect.get(),self.vehicleSquadTwoNumSelect.get(),self.vehicleSquadThreeNumSelect.get(),self.vehicleSquadFourNumSelect.get(),self.vehicleSquadFifthNumSelect.get()]
         self.header = [self.unitOptionSelected.get(),self.secoundUnitOptionSelected.get(),self.thirdUnitOptionSelected.get(),self.fourthUnitOptionSelected.get(),self.fifthUnitOptionSelected.get(),self.vehcileOptionSelected.get(),self.secoundVehcileOptionSelected.get(),self.thirdVehcileOptionSelected.get(),self.fourthVehcileOptionSelected.get(),self.fifthVehcileOptionSelected.get(),self.armyOptionSelected.get()]
-        with open(fileNameCreated,'w',encoding='UTF8') as f:
+        with open(self.fileNameCreated,'w',encoding='UTF8') as f:
             writer = csv.writer(f)
             writer.writerow(self.header)
             writer.writerow(self.data)
 
 
+class fight:
+    def __init__(self):
+        pass
+
+
+    def fight(self,chance):
+        pass
+
 if __name__=="__main__":
     application = Menu()
     application.mainloop()
+    rows = []
+    print(application.fileNameCreated)
+
+    with open(application.fileNameCreated,'r') as file:
+         csvreader = csv.reader(file)
+         header = next(csvreader)
+         for row in csvreader:
+            rows.append(row)
+    print(header)
+    print(rows)
 
 
 
