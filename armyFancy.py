@@ -31,6 +31,8 @@ class Menu(tk.Tk):
         self.unitCount = 0
         self.vehicleCount = 0
         self.vehicleSquad = tk.IntVar(self)
+        self.fourthVehcileOptionSelected = StringVar(self)
+        self.fifthVehcileOptionSelected = StringVar(self)
         self.createWidgets()
         
 
@@ -134,7 +136,75 @@ class Menu(tk.Tk):
         
 
     def vehicleCreate(self,*args):
-        pass
+        self.vehicleChoiceLabel = ttk.LabelFrame(self,text='Vehicle choices')
+        self.vehicleChoiceLabel.grid(column=2,row=2,padx=30,pady=30)
+        if self.vehicleSquad.get() == 1:
+
+            self.firstVehicleLabel = ttk.Label(self.vehicleChoiceLabel,text='First squad of vehicle units:')
+            self.firstVehicleLabel.grid(column=2,row=2, sticky=tk.W)
+            self.firstVehicleUnits = ttk.OptionMenu(self.vehicleChoiceLabel,self.vehcileOptionSelected,self.vehicleSelector[0],*self.vehicleSelector)
+            self.firstVehicleUnits.grid(column=3,row=2,sticky=tk.W)
+        elif self.vehicleSquad.get() == 2:
+            self.firstVehicleLabel = ttk.Label(self.vehicleChoiceLabel,text='First squad of vehicle units:')
+            self.firstVehicleLabel.grid(column=2,row=2, sticky=tk.W)
+            self.firstVehicleUnits = ttk.OptionMenu(self.vehicleChoiceLabel,self.vehcileOptionSelected,self.vehicleSelector[0],*self.vehicleSelector)
+            self.firstVehicleUnits.grid(column=3,row=2,sticky=tk.W)
+            self.secondVehicleLabel = ttk.Label(self.vehicleChoiceLabel,text='Second squad of vehicle units:')
+            self.secondVehicleLabel.grid(column=2,row=3,sticky=tk.W)
+            self.secondVehicleUnits = ttk.OptionMenu(self.vehicleChoiceLabel,self.secoundVehcileOptionSelected,self.vehicleSelector[0],*self.vehicleSelector)
+            self.secondVehicleUnits.grid(column=3,row=3,sticky=tk.W)
+        elif self.vehicleSquad.get() == 3:
+            self.firstVehicleLabel = ttk.Label(self.vehicleChoiceLabel,text='First squad of vehicle units:')
+            self.firstVehicleLabel.grid(column=2,row=2, sticky=tk.W)
+            self.firstVehicleUnits = ttk.OptionMenu(self.vehicleChoiceLabel,self.vehcileOptionSelected,self.vehicleSelector[0],*self.vehicleSelector)
+            self.firstVehicleUnits.grid(column=3,row=2,sticky=tk.W)
+            self.secondVehicleLabel = ttk.Label(self.vehicleChoiceLabel,text='Second squad of vehicle units:')
+            self.secondVehicleLabel.grid(column=2,row=3,sticky=tk.W)
+            self.secondVehicleUnits = ttk.OptionMenu(self.vehicleChoiceLabel,self.secoundVehcileOptionSelected,self.vehicleSelector[0],*self.vehicleSelector)
+            self.secondVehicleUnits.grid(column=3,row=3,sticky=tk.W)
+            self.thirdVehicleLabel = ttk.Label(self.vehicleChoiceLabel,text='Third squad of vehicle units:')
+            self.thirdVehicleLabel.grid(column=2,row=4,sticky=tk.W)
+            self.thirdVehicleUnits = ttk.OptionMenu(self.vehicleChoiceLabel,self.thirdVehcileOptionSelected,self.vehicleSelector[0],*self.vehicleSelector)
+            self.thirdVehicleUnits.grid(column=3,row=4,sticky=tk.W)
+        elif self.vehicleSquad.get() == 4:
+            self.firstVehicleLabel = ttk.Label(self.vehicleChoiceLabel,text='First squad of vehicle units:')
+            self.firstVehicleLabel.grid(column=2,row=2, sticky=tk.W)
+            self.firstVehicleUnits = ttk.OptionMenu(self.vehicleChoiceLabel,self.vehcileOptionSelected,self.vehicleSelector[0],*self.vehicleSelector)
+            self.firstVehicleUnits.grid(column=3,row=2,sticky=tk.W)
+            self.secondVehicleLabel = ttk.Label(self.vehicleChoiceLabel,text='Second squad of vehicle units:')
+            self.secondVehicleLabel.grid(column=2,row=3,sticky=tk.W)
+            self.secondVehicleUnits = ttk.OptionMenu(self.vehicleChoiceLabel,self.secoundVehcileOptionSelected,self.vehicleSelector[0],*self.vehicleSelector)
+            self.secondVehicleUnits.grid(column=3,row=3,sticky=tk.W)
+            self.thirdVehicleLabel = ttk.Label(self.vehicleChoiceLabel,text='Third squad of vehicle units:')
+            self.thirdVehicleLabel.grid(column=2,row=4,sticky=tk.W)
+            self.thirdVehicleUnits = ttk.OptionMenu(self.vehicleChoiceLabel,self.thirdVehcileOptionSelected,self.vehicleSelector[0],*self.vehicleSelector)
+            self.thirdVehicleUnits.grid(column=3,row=4,sticky=tk.W)
+            self.fourthVehicleLabel = ttk.Label(self.vehicleChoiceLabel,text='Fourth squad of vehicle units:')
+            self.fourthVehicleLabel.grid(column=2,row=5,sticky=tk.W)
+            self.fourthVehicleUnits = ttk.OptionMenu(self.vehicleChoiceLabel,self.fourthVehcileOptionSelected,self.vehicleSelector[0],*self.vehicleSelector)
+            self.fourthVehicleUnits.grid(column=3,row=5,sticky=tk.W)
+        elif self.vehicleSquad.get() == 5:
+            self.firstVehicleLabel = ttk.Label(self.vehicleChoiceLabel,text='First squad of vehicle units:')
+            self.firstVehicleLabel.grid(column=2,row=2, sticky=tk.W)
+            self.firstVehicleUnits = ttk.OptionMenu(self.vehicleChoiceLabel,self.vehcileOptionSelected,self.vehicleSelector[0],*self.vehicleSelector)
+            self.firstVehicleUnits.grid(column=3,row=2,sticky=tk.W)
+            self.secondVehicleLabel = ttk.Label(self.vehicleChoiceLabel,text='Second squad of vehicle units:')
+            self.secondVehicleLabel.grid(column=2,row=3,sticky=tk.W)
+            self.secondVehicleUnits = ttk.OptionMenu(self.vehicleChoiceLabel,self.secoundVehcileOptionSelected,self.vehicleSelector[0],*self.vehicleSelector)
+            self.secondVehicleUnits.grid(column=3,row=3,sticky=tk.W)
+            self.thirdVehicleLabel = ttk.Label(self.vehicleChoiceLabel,text='Third squad of vehicle units:')
+            self.thirdVehicleLabel.grid(column=2,row=4,sticky=tk.W)
+            self.thirdVehicleUnits = ttk.OptionMenu(self.vehicleChoiceLabel,self.thirdVehcileOptionSelected,self.vehicleSelector[0],*self.vehicleSelector)
+            self.thirdVehicleUnits.grid(column=3,row=4,sticky=tk.W)
+            self.fourthVehicleLabel = ttk.Label(self.vehicleChoiceLabel,text='Fourth squad of vehicle units:')
+            self.fourthVehicleLabel.grid(column=2,row=5,sticky=tk.W)
+            self.fourthVehicleUnits = ttk.OptionMenu(self.vehicleChoiceLabel,self.fourthVehcileOptionSelected,self.vehicleSelector[0],*self.vehicleSelector)
+            self.fourthVehicleUnits.grid(column=3,row=5,sticky=tk.W)
+
+            self.fifthVehicleLabel = ttk.Label(self.vehicleChoiceLabel,text='Fifth squad of vehicle units:')
+            self.fifthVehicleLabel.grid(column=2,row=6,sticky=tk.W)
+            self.fifthVehicleUnits = ttk.OptionMenu(self.vehicleChoiceLabel,self.fifthVehcileOptionSelected,self.vehicleSelector[0],*self.vehicleSelector)
+            self.fifthVehicleUnits.grid(column=3,row=6,sticky=tk.W)
 
 
     def groundUnitCreate(self,*args):
