@@ -379,7 +379,7 @@ class Menu(tk.Tk):
         fileName = re.split("'",str(fi))
         fileNameCreated = fileName[1]
         self.data = [self.groundUnitSquadOneNumSelect.get(),self.groundUnitSquadTwoNumSelect.get(),self.groundUnitSquadThreeNumSelect.get(),self.groundUnitSquadFourNumSelect.get(),self.groundUnitSquadFifthNumSelect.get(),self.vehicleSquadOneNumSelect.get(),self.vehicleSquadTwoNumSelect.get(),self.vehicleSquadThreeNumSelect.get(),self.vehicleSquadFourNumSelect.get(),self.vehicleSquadFifthNumSelect.get()]
-        self.header = [self.unitOptionSelected.get(),self.secoundUnitOptionSelected.get(),self.thirdUnitOptionSelected.get(),self.fourthUnitOptionSelected.get(),self.fifthUnitOptionSelected.get(),self.vehcileOptionSelected.get(),self.secoundVehcileOptionSelected.get(),self.thirdVehcileOptionSelected.get(),self.fourthVehcileOptionSelected.get(),self.fifthVehcileOptionSelected.get(),self.armyOptionSelected]
+        self.header = [self.unitOptionSelected.get(),self.secoundUnitOptionSelected.get(),self.thirdUnitOptionSelected.get(),self.fourthUnitOptionSelected.get(),self.fifthUnitOptionSelected.get(),self.vehcileOptionSelected.get(),self.secoundVehcileOptionSelected.get(),self.thirdVehcileOptionSelected.get(),self.fourthVehcileOptionSelected.get(),self.fifthVehcileOptionSelected.get(),self.armyOptionSelected.get()]
         with open(fileNameCreated,'w',encoding='UTF8') as f:
             writer = csv.writer(f)
             writer.writerow(self.header)
