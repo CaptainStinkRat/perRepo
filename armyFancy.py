@@ -409,15 +409,17 @@ if __name__=="__main__":
         for row in csvreader:
             rows.append(row)
     if header[0] == 'Foot solider':
-        footSoliderTotal += rows[0]
+        firstSquadSolider = 0
+        
+        footSoliderTotal += int(rows[0])
         if header[1] == 'Foot solider':
-            footSoliderTotal +=rows[1]
+            footSoliderTotal +=int(rows[1])
             if header[2] == 'Foot solider':
-                footSoliderTotal +=rows[2]
+                footSoliderTotal +=int(rows[2])
                 if header[3] == 'Foot solider':
-                    footSoliderTotal +=rows[3]
+                    footSoliderTotal +=int(rows[3])
                     if header[4] == 'Foot solider':
-                        footSoliderTotal +=rows[4]
+                        footSoliderTotal +=(rows[4])
     elif header[0] == 'Pilot':
         pilotTotal += rows[0]
         if header[1] == 'Pilot':
