@@ -14,7 +14,6 @@ import random
 
 global unitCount
 
-##creating class object for the menu##
 class Menu(tk.Tk):
     def __init__(self):
         super().__init__()
@@ -566,8 +565,8 @@ if __name__=="__main__":
     plt.axhline(0,c='black',ls='--')
 
 
-    plt.xlim(-250,250)
-    plt.ylim(-2500,2500)
+    plt.xlim(-2000,2000)
+    plt.ylim(-100000,100000)
 
     plt.title('Average loss in unit cost and count')
     plt.xlabel('Average unit loss')
