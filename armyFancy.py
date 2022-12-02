@@ -562,10 +562,12 @@ if __name__=="__main__":
     plt.scatter(X4,Y4,s=30,c='purple',marker='D',label='Jeep')
     plt.scatter(X5,Y5,s=30,c='black',marker='d',label='Tank')
     plt.legend(loc='best')
+    plt.axvline(0,c='black',ls='--')
+    plt.axhline(0,c='black',ls='--')
 
 
-    plt.xlim(0,50)
-    plt.ylim(0,2500)
+    plt.xlim(-250,250)
+    plt.ylim(-2500,2500)
 
     plt.title('Average loss in unit cost and count')
     plt.xlabel('Average unit loss')
