@@ -1,0 +1,149 @@
+import tkinter as tk
+from tkinter import ttk
+import pandas as pd
+from tkinter import *
+
+
+
+class Menu(tk.Tk):
+    def __init__(self):
+        super().__init__()
+
+        self. geometry('900x320')
+        self.title('InfoSec 2022 Security Review List')
+
+        self.style = ttk.Style()
+        self.style.theme_use('clam')
+        self.searchTerm = tk.StringVar(self)
+        self.createWidgets()
+
+    def createWidgets(self):
+        
+        self.tree = ttk.Treeview(self)
+        # self.searchTerm.trace('w',self.searchData)
+        # self.searchEntry = Entry(self,textvariable=self.searchTerm,width=40)
+        self.searchEntry=Button(text='Search list',command=self.searchData)
+        self.searchEntry.pack()
+        self.tree.heading('#0',text='Infosec Security Reviews',anchor=tk.W)
+        self.tree.insert('','0','item1',text='Infosec Reviews 2022',open=True)
+        self.tree.insert('','1','item2',text='Completed')
+        self.tree.insert('','2','item3',text='In Progress')
+        self.tree.insert('','3','item4',text='Cancelled')
+        self.tree.insert('','4','item5',text='Infosec Reviews 2021',open=True)
+        self.tree.insert('','5','item6',text='Completed')
+        self.tree.insert('','6','item7',text='Infosec Reviews 2020',open=True)
+        self.tree.insert('','7','item8', text='Completed')
+        sBar = ttk.Scrollbar(self,orient='vertical',command=self.tree.yview)
+        sBar.pack(side='right',fill='y')
+        self.tree.configure(yscrollcommand=sBar.set)
+        # self.tree.pack(fill='both')
+        inProgessList = []
+        cancelledList = []
+        completedList2021 = []
+        completedList = []
+        i=0
+        x=0
+        y=0
+        d=0
+        e=0
+        cancelledListForSearch = []
+        inProgessListForSearch = []
+        self.dataList = completedList + inProgessListForSearch + cancelledListForSearch + completedList2020 + completedList2021
+        for i in range(0,56):
+            self.tree.insert('item2','end',text="".join(completedList[i]),open=False,tags=completedList[i])
+            self.tree.move('item2','item1','end')
+            i+1
+        for x in range(0,13):
+            self.tree.insert('item3','end',text="".join(inProgessList[x]),open=False,tags=inProgessList[x])
+            self.tree.move('item3','item1','end')
+            x+1
+        for y in range(0,14):
+            self.tree.insert('item4','end',text="".join(cancelledList[y]),open=False,tags=cancelledList[y])
+            self.tree.move('item4','item1','end')
+            y+1
+        for d in range(0,60):
+            self.tree.insert('item6','end',text="".join(completedList2021[d]),open=False,tags=completedList2021[d])
+            self.tree.move('item6','item5','end')
+            d+1
+        for e in range(0,71):
+            self.tree.insert('item8','end',text="".join(completedList2020[e]),open=False,tags=completedList2020[e])
+            self.tree.move('item8','item7','end')
+            e+1
+        # for self.x in self.df.values.tolist():
+        #     self.tree.insert('item2','end',text=f'{self.x}',open=False)
+            # self.tree.move('item2','item1','end')
+        # for self.x in self.df.values.tolist():
+        #     pass
+        #     self.tree.insert('',1,text='1',values=self.x,tags=self.x)
+        self.tree.pack(fill='both')
+    def searchData(self,*args):
+        newWindow = Toplevel(self)
+        newWindow.title('Search')
+
+        dataList = self.dataList
+
+    # def search(self, item=''):
+    #     children = self.tree.get_children(item)
+    #     for child in children:
+    #         text = self.tree.item(child, 'text')
+    #         if text.startswith(self.entry.get()):
+    #             self.tree.selection_set(child)
+    #             self.tree.detach(child)
+    #             self.tree.move(child,'item9','end')
+    #             return True
+    #         else:
+    #             res = self.search(child)
+    #             if res:
+    #                 return True
+                    
+        def update(data):
+            myList.delete(0,END)
+
+            for item in data:
+                 myList.insert(END,item)
+        def fillout(event):
+             myEntry.delete(0,END)
+             myEntry.insert(0,myList.get(ANCHOR))
+        def check(event):
+            typed = myEntry.get()
+            if typed == '':
+                 data=self.dataList
+            else:
+                data = []
+                for item in self.dataList:
+                    if typed.lower() in item.lower():
+                        data.append(item)
+            update(data)
+        myEntry = Entry(newWindow)
+        myEntry.pack(fill=BOTH,expand=False)
+        
+        myList = Listbox(newWindow,width=50)
+        myList.pack(fill=BOTH,expand=True)
+        myList.bind("<<ListboxSelect>>",fillout)
+        myEntry.bind("<KeyRelease>",check)
+        update(dataList)
+    #     self.myList.delete(0,END)
+    #     for item in self.data:
+    #         self.myList.insert(END,item)
+    #     # self.tree.selection_set(self.tree.tag_has(self.searchTerm.get()))
+    #     # self.tree.detach(self.tree.tag_has(self.searchTerm.get()))
+    #     # self.tree.move(self.tree.tag_has(self.searchTerm.get()),'item9','end')
+    #     # for item in 
+    #     #     self.tree.insert(END,item)
+    #     typed = self.searchTerm.get()
+    #     if typed == '':
+    #         self.data = []
+    #         pass
+    #     else:
+    #         searchresults = []
+    #         for item in self.tree.tag_has(self.searchTerm.get()):
+    #             if typed.lower() in item.lower():
+    #                 # searchresults.append(item)
+    #                 self.tree.move(self.tree.tag_has(self.searchTerm.get()),'item9','end')
+    # def fillout(self,e):
+    #     self.searchTerm.delete(0,END)
+    #     self.searchTerm.insert(0,self.myList.get(ANCHOR))
+        
+if __name__=='__main__':
+    app = Menu()
+    app.mainloop()
