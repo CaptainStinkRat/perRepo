@@ -58,8 +58,48 @@ class Menu(tk.Tk):
             self.constitutionInsert.insert(0,13)
             self.wisdomInsert.insert(0,10)
             self.charismaInsert.insert(0,8)
-
-
+        elif self.classSelection.get() == 'Barbarian':
+            self.dexterityInsert.insert(0,4)
+            self.strengthInsert.insert(0,14)
+            self.intellectInsert.insert(0,5)
+            self.constitutionInsert.insert(0,15)
+            self.wisdomInsert.insert(0,5)
+            self.charismaInsert.insert(0,6)
+        elif self.classSelection.get() == 'Archer':
+            self.dexterityInsert.insert(0,13)
+            self.strengthInsert.insert(0,5)
+            self.intellectInsert.insert(0,8)
+            self.constitutionInsert.insert(0,6)
+            self.wisdomInsert.insert(0,7)
+            self.charismaInsert.insert(0,8)
+        elif self.classSelection.get() == 'Rogue':
+            self.dexterityInsert.insert(0,14)
+            self.strengthInsert.insert(0,5)
+            self.intellectInsert.insert(0,8)
+            self.constitutionInsert.insert(0,6)
+            self.wisdomInsert.insert(0,7)
+            self.charismaInsert.insert(0,7)
+        elif self.classSelection.get() == 'Warlock':
+            self.dexterityInsert.insert(0,6)
+            self.strengthInsert.insert(0,5)
+            self.intellectInsert.insert(0,11)
+            self.constitutionInsert.insert(0,6)
+            self.wisdomInsert.insert(0,10)
+            self.charismaInsert.insert(0,4)
+        elif self.classSelection.get() == 'Paladin':
+            self.dexterityInsert.insert(0,6)
+            self.strengthInsert.insert(0,11)
+            self.intellectInsert.insert(0,8)
+            self.constitutionInsert.insert(0,11)
+            self.wisdomInsert.insert(0,8)
+            self.charismaInsert.insert(0,8)
+        elif self.classSelection.get() == 'Bard':
+            self.dexterityInsert.insert(0,7)
+            self.strengthInsert.insert(0,5)
+            self.intellectInsert.insert(0,10)
+            self.constitutionInsert.insert(0,7)
+            self.wisdomInsert.insert(0,9)
+            self.charismaInsert.insert(0,12)
 if __name__=='__main__':
     app = Menu()
     app.mainloop()
