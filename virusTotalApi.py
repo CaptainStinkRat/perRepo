@@ -46,7 +46,6 @@ class gui(tk.Tk):
 
     def createJson(self,*args):
         data = []
-        print(self.websiteList.get(0,END))
         for i in self.websiteList.get(0,END):
             print(i)
             data.append({
@@ -61,11 +60,12 @@ class gui(tk.Tk):
         fileName = fd.askopenfilename(title='Open website list',initialdir='/',filetypes=fileTypes)
         with open(fileName) as jsonFile:
             listObj = json.load(jsonFile)
-            print(listObj)
             x = len(listObj)
             for x in range(0,x):
                 self.websiteList.insert(END,listObj[x]["Websites"])
     def multipleScan(self,*args):
+        self.maliciousList.delete(0,END)
+        self.notMalicious.delete(0,END)
         for i in self.websiteList.get(0,END):
             urlID = vt.url_id(i)
             url = self.client.get_object("/urls/{}".format(urlID))
