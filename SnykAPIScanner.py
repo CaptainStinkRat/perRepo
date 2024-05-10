@@ -64,7 +64,7 @@ class Menu(tk.Tk):
 
         pass
     def submit(self,*args):
-        client = snyk.SnykClient('1420765f-9921-426b-a64a-ed46fc3edb3d',tries=4,debug=True)
+        client = snyk.SnykClient('802fa9f0-0ef1-4ec9-a74e-1d6a772086ba',tries=4,debug=True)
 
         org=client.organizations.first()
 
